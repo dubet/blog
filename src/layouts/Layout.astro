@@ -1,0 +1,24 @@
+---
+import FaceWithMonocle from 'emojis/FaceWithMonocle.astro';
+
+const { title, lang } = Astro.props;
+
+import 'stylesheets/dubet.css';
+---
+
+<html lang={lang}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="description" content="Personal blog of Cyril Dubet, french engineer in Paris. Multiple articles about software development, but also personal thoughts on life.">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<link rel="preload" href="/fonts/Cubano.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	</head>
+	<body>
+		<slot />
+		<div class="flex h-screen w-screen items-center justify-center bg-black px-2 sm:hidden">
+			<FaceWithMonocle />
+		</div>
+	</body>
+</html>

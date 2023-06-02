@@ -1,0 +1,21 @@
+---
+import Layout from 'layouts/Layout.astro';
+
+import WarningIcon from 'icons/Warning.astro';
+import HomeIcon from 'icons/Home.astro';
+---
+
+<Layout lang="fr" title="Erreur">
+	<header class="hidden h-screen flex-col items-center justify-center gap-4 bg-blue-950 text-white sm:flex">
+		<span class="h-16 w-16 flex-shrink-0">
+			<WarningIcon />
+		</span>
+		<h1 class="cubano text-center text-5xl font-thin">Erreur</h1>
+		<h2 class="cubano text-center text-xl font-thin">La page demandée n'existe pas.</h2>
+		<a href="/" class="flex h-16 w-16 items-center justify-center rounded-lg border-4 hover:border-green-300 hover:text-green-300">
+			<div class="h-10 w-10">
+				<HomeIcon />
+			</div>
+		</a>
+	</header>
+</Layout>

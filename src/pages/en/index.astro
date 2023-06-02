@@ -1,0 +1,116 @@
+---
+import Layout from 'layouts/Layout.astro';
+
+import Degree from 'components/Degree.astro';
+import Experience from 'components/Experience.astro';
+import ProgressBar from 'components/ProgressBar.astro';
+import ScrollButton from 'components/ScrollButton.astro';
+
+import CopyrightIcon from 'icons/Copyright.astro';
+import GithubIcon from 'icons/Github.astro';
+import EnvelopeIcon from 'icons/Envelope.astro';
+import BriefcaseIcon from 'icons/Briefcase.astro';
+import UserTieIcon from 'icons/UserTie.astro';
+import LocationDotIcon from 'icons/LocationDot.astro';
+import CakeCandlesIcon from 'icons/CakeCandles.astro';
+import GraduationCapIcon from 'icons/GraduationCap.astro';
+import CodeIcon from 'icons/Code.astro';
+import LanguageIcon from 'icons/Language.astro';
+---
+
+<Layout lang="en" title="Home">
+	<header class="hidden h-screen flex-col items-center justify-center gap-4 bg-blue-950 text-white sm:flex">
+		<div class="cubano flex items-center gap-4">
+			<a href="/" class="hero-button text-xl">FR</a>
+			<a href="#" class="hero-button text-xl">EN</a>
+		</div>
+		<h1 class="cubano text-7xl font-thin">dubet.fr</h1>
+		<ScrollButton />
+	</header>
+	<main class="hidden bg-orange-50 sm:block">
+		<div class="mx-auto grid grid-cols-1 gap-4 bg-orange-50 px-4 py-8 md:container lg:grid-cols-2">
+			<section class="flex flex-col items-start gap-4">
+				<div class="flex w-full items-center justify-center">
+					<img class="h-64 w-64 rounded-full border-8 border-blue-950 md:h-80 md:w-80" alt="Photograph of Cyril Dubet" src="images/itsame.jpg" />
+				</div>
+				<div class="flex w-full items-center justify-center gap-4">
+					<a aria-label="email-contact" href="mailto:cyril@dubet.fr" class="cv-button">
+						<div class="h-10 w-10">
+							<EnvelopeIcon />
+						</div>
+					</a>
+					<a aria-label="github-profile" target="_blank" href="https://github.com/dubet" class="cv-button">
+						<div class="h-10 w-10">
+							<GithubIcon />
+						</div>
+					</a>
+				</div>
+				<div class="cubano text-md flex w-full flex-wrap justify-center gap-2">
+					<div class="cv-info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<UserTieIcon />
+						</span>
+						<span>Cyril Dubet</span>
+					</div>
+					<div class="cv-info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<LocationDotIcon />
+						</span>
+						<span>Paris, France</span>
+					</div>
+					<div class="cv-info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<CakeCandlesIcon />
+						</span>
+						<span>December, 24th 1996 (26 y.o.)</span>
+					</div>
+				</div>
+				<p>With 5 years of experience in software engineering projects, I have specialized over time in backend development with strong security and performance constraints using low-level languages. I enjoy writing efficient code and providing simple and elegant solutions to complex problems. Primarily interested in security and concurrent programming, I also have devops skills under my belt: continuous integration, continuous deployment and continuous improvement, with automation as my main focus.</p>
+				<h1 class="cubano flex w-full items-center gap-2 rounded-lg bg-blue-950 px-2 py-2 text-xl font-bold uppercase text-white">
+					<span class="h-8 w-8 flex-shrink-0">
+						<LanguageIcon />
+					</span>
+					<span>Languages</span>
+				</h1>
+				<ProgressBar name="French" progress="100" />
+				<ProgressBar name="English" progress="90" />
+				<ProgressBar name="German" progress="50" />
+				<h1 class="cubano flex w-full items-center gap-2 rounded-lg bg-blue-950 px-2 py-2 text-xl font-bold uppercase text-white">
+					<span class="h-8 w-8 flex-shrink-0">
+						<CodeIcon />
+					</span>
+					<span>Programming</span>
+				</h1>
+				<ProgressBar name="C++" progress="90" />
+				<ProgressBar name="Bash" progress="90" />
+				<ProgressBar name="Javascript" progress="70" />
+				<ProgressBar name="Rust" progress="60" />
+				<ProgressBar name="Go" progress="60" />
+			</section>
+			<section class="flex flex-col items-start gap-4">
+				<h1 class="cubano flex w-full items-center gap-2 rounded-lg bg-blue-950 px-2 py-2 text-xl font-bold uppercase text-white">
+					<span class="h-8 w-8 flex-shrink-0">
+						<BriefcaseIcon />
+					</span>
+					<span>Work Experiences</span>
+				</h1>
+				<Experience title="C++ DevOps Engineer" date="Since 2022" company="Avisto" location="Cachan, France" content="Maintained a transactional middleware framework and a cloud native routing application on Microsoft Azure PaaS. Participated in technical workshops for the redesign of a solution capable of transmitting sensitive data (such as credit cards) through a chain of untrusted services in order to meet the requirements of the PCI DSS standard." tags={['C++', 'Python', 'Kubernetes', 'Artifactory', 'Helm', 'ArgoCD', 'Prisma', 'Prometheus', 'Splunk', 'Boost']} />
+				<Experience title="C++ Security Engineer" date="2020 - 2022" company="Silicom" location="Guyancourt, France" content="Maintained a set of components for the secure transmission of network performance metrics (latency, delay...) between GNU/Linux embedded servers located on mobile naval platforms. Developed pipelines to automate testing and improve quality (code coverage)." tags={['C++', 'Ansible', 'Jenkins', 'OpenSSL', 'Kafka', 'SonarQube', 'SNMP', 'Docker']} />
+				<Experience title="Product Owner / QA Tester (Apprenticeship)" date="2017 - 2020" company="EDF" location="Saint-Denis, France" content="Tested and monitored a critical surveillance application at the heart of the nuclear safety business. Specified technical and functional requirements for the redesign of the solution in alignment with business needs (performance, reliability, robustness). Developed of VBA Excel macros for the edition of critical documents with high added value." tags={['PHP', 'Javascript', 'MySQL', 'VBA']} />
+				<Experience title="Web Developer (Internship)" date="2017" company="RATP" location="Saint-Ouen, France" content="Maintained a Web portal application in PHP / Javascript. Optimized SQL queries and bug fixes. Developed functionalities for a work order management application." tags={['PHP', 'Javascript', 'MySQL']} />
+				<Experience title="Systems Administrator (Internship)" date="2016" company="RATP" location="Saint-Ouen, France" content="Developed an SFTP access management daemon on RHEL5 servers. Increased skills on system administration and networks." tags={['Bash', 'VirtualBox']} />
+				<h1 class="cubano flex w-full items-center gap-2 rounded-lg bg-blue-950 px-2 py-2 text-xl font-bold uppercase text-white">
+					<span class="h-8 w-8 flex-shrink-0">
+						<GraduationCapIcon />
+					</span>
+					<span>Education</span>
+				</h1>
+				<Degree title="Engineer's Degree - Information Systems" date="2017 - 2020" company="CNAM" location="Paris, France" />
+				<Degree title="Higher Technician Diploma - IT Services for Organizations" date="2015 - 2017" company="Lycée Louis Armand" location="Paris, France" />
+			</section>
+		</div>
+		<footer class="hidden text-white sm:block">
+			<div class="cubano flex items-center justify-center gap-2 bg-blue-950 p-6">Cyril Dubet <span class="h-4 w-4 flex-shrink-0"><CopyrightIcon /></span> 2023</div>
+		</footer>
+	</main>
+</Layout>

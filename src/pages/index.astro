@@ -1,0 +1,116 @@
+---
+import Layout from 'layouts/Layout.astro';
+
+import Degree from 'components/Degree.astro';
+import Experience from 'components/Experience.astro';
+import ProgressBar from 'components/ProgressBar.astro';
+import ScrollButton from 'components/ScrollButton.astro';
+
+import CopyrightIcon from 'icons/Copyright.astro';
+import GithubIcon from 'icons/Github.astro';
+import EnvelopeIcon from 'icons/Envelope.astro';
+import BriefcaseIcon from 'icons/Briefcase.astro';
+import UserTieIcon from 'icons/UserTie.astro';
+import LocationDotIcon from 'icons/LocationDot.astro';
+import CakeCandlesIcon from 'icons/CakeCandles.astro';
+import GraduationCapIcon from 'icons/GraduationCap.astro';
+import CodeIcon from 'icons/Code.astro';
+import LanguageIcon from 'icons/Language.astro';
+---
+
+<Layout lang="fr" title="Accueil">
+	<header class="hidden h-screen flex-col items-center justify-center gap-4 bg-blue-950 text-white sm:flex">
+		<div class="cubano flex items-center gap-4">
+			<a href="#" class="hero-button text-xl">FR</a>
+			<a href="/en" class="hero-button text-xl">EN</a>
+		</div>
+		<h1 class="cubano text-7xl font-thin">dubet.fr</h1>
+		<ScrollButton />
+	</header>
+	<main class="hidden bg-orange-50 sm:block">
+		<div class="mx-auto grid grid-cols-1 gap-4 bg-orange-50 px-4 py-8 md:container lg:grid-cols-2">
+			<section class="flex flex-col items-start gap-4">
+				<div class="flex w-full items-center justify-center">
+					<img class="h-64 w-64 rounded-full border-8 border-blue-950 md:h-80 md:w-80" alt="Photograph of Cyril Dubet" src="images/itsame.jpg" />
+				</div>
+				<div class="flex w-full items-center justify-center gap-4">
+					<a aria-label="email-contact" href="mailto:cyril@dubet.fr" class="cv-button">
+						<div class="h-10 w-10">
+							<EnvelopeIcon />
+						</div>
+					</a>
+					<a aria-label="github-profile" target="_blank" href="https://github.com/dubet" class="cv-button">
+						<div class="h-10 w-10">
+							<GithubIcon />
+						</div>
+					</a>
+				</div>
+				<div class="cubano text-md flex w-full flex-wrap justify-center gap-2">
+					<div class="cv-info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<UserTieIcon />
+						</span>
+						<span>Cyril Dubet</span>
+					</div>
+					<div class="cv-info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<LocationDotIcon />
+						</span>
+						<span>Paris, France</span>
+					</div>
+					<div class="cv-info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<CakeCandlesIcon />
+						</span>
+						<span>24 décembre 1996 (26 ans)</span>
+					</div>
+				</div>
+				<p>Avec 5 ans d'expérience dans des projets d'ingénierie logicielle, je me suis spécialisé au fil du temps dans le développement backend avec des langages de bas niveau sur des problématiques de sécurité ou de volumétrie transactionnelle. J'aime écrire du code efficace et fournir des solutions simples et élégantes à des problèmes complexes. Principalement intéressé par la sécurité et la programmation concurrente, je possède aussi des compétences devops: intégration continue, déploiement continu et amélioration continue, avec l'automatisation comme cheval de bataille, aujourd'hui incontournable dans le métier.</p>
+				<h1 class="cubano flex w-full items-center gap-2 rounded-lg bg-blue-950 px-2 py-2 text-xl font-bold uppercase text-white">
+					<span class="h-8 w-8 flex-shrink-0">
+						<LanguageIcon />
+					</span>
+					<span>Langues</span>
+				</h1>
+				<ProgressBar name="Français" progress="100" />
+				<ProgressBar name="Anglais" progress="90" />
+				<ProgressBar name="Allemand" progress="50" />
+				<h1 class="cubano flex w-full items-center gap-2 rounded-lg bg-blue-950 px-2 py-2 text-xl font-bold uppercase text-white">
+					<span class="h-8 w-8 flex-shrink-0">
+						<CodeIcon />
+					</span>
+					<span>Programmation</span>
+				</h1>
+				<ProgressBar name="C++" progress="90" />
+				<ProgressBar name="Bash" progress="90" />
+				<ProgressBar name="Javascript" progress="70" />
+				<ProgressBar name="Rust" progress="60" />
+				<ProgressBar name="Go" progress="60" />
+			</section>
+			<section class="flex flex-col items-start gap-4">
+				<h1 class="cubano flex w-full items-center gap-2 rounded-lg bg-blue-950 px-2 py-2 text-xl font-bold uppercase text-white">
+					<span class="h-8 w-8 flex-shrink-0">
+						<BriefcaseIcon />
+					</span>
+					<span>Expériences Professionnelles</span>
+				</h1>
+				<Experience title="Ingénieur C++ DevOps" date="Depuis 2022" company="Avisto" location="Cachan, France" content="Maintenance d'un framework transactionnel middleware et d'une application de routage cloud native sur les PaaS Microsoft Azure. Participation à des ateliers techniques dans le cadre de la refonte d'une solution capable de transmettre des données sensibles (type carte bancaire) à travers une chaîne de services afin de satisfaire les exigences du standard PCI DSS." tags={['C++', 'Python', 'Kubernetes', 'Artifactory', 'Helm', 'ArgoCD', 'Prisma', 'Prometheus', 'Splunk', 'Boost']} />
+				<Experience title="Ingénieur Sécurité C++" date="2020 - 2022" company="Silicom" location="Guyancourt, France" content="Maintien d'un ensemble de composants pour la transmission sécurisée de métriques de performance réseau (latence, délai...) entre des serveurs embarqués GNU/Linux situés sur des plates-formes navales mobiles. Développement de pipelines pour automatiser les tests et améliorer la qualité (couverture de code)." tags={['C++', 'Ansible', 'Jenkins', 'OpenSSL', 'Kafka', 'SonarQube', 'SNMP', 'Docker']} />
+				<Experience title="Product Owner / Testeur Applicatif (Alternance)" date="2017 - 2020" company="EDF" location="Saint-Denis, France" content="Test et suivi d'une application de surveillance critique au coeur des métiers de la sûreté nucléaire. Spécification technique et fonctionnelle de la refonte de cette application en alignement avec les besoins métiers (performance, fiabilité, robustesse). Développement de macros VBA Excel pour l'édition de documents critique à forte valeur ajoutée." tags={['PHP', 'Javascript', 'MySQL', 'VBA']} />
+				<Experience title="Développeur Web (Stage)" date="2017" company="RATP" location="Saint-Ouen, France" content="Maintenance d'un portail Web applicatif en PHP / Javascript. Optimisation des requêtes SQL et correction de bogues. Développement de fonctionnalités pour une application de gestion des ordres de travail." tags={['PHP', 'Javascript', 'MySQL']} />
+				<Experience title="Administrateur Systèmes & Réseaux (Stage)" date="2016" company="RATP" location="Saint-Ouen, France" content="Développement d'un daemon de gestion des accès SFTP sur des serveurs RHEL5. Montée en compétences sur l'administration système et les réseaux." tags={['Bash', 'VirtualBox']} />
+				<h1 class="cubano flex w-full items-center gap-2 rounded-lg bg-blue-950 px-2 py-2 text-xl font-bold uppercase text-white">
+					<span class="h-8 w-8 flex-shrink-0">
+						<GraduationCapIcon />
+					</span>
+					<span>Diplômes</span>
+				</h1>
+				<Degree title="Diplôme d'Ingénieur en Systèmes d'information" date="2017 - 2020" company="CNAM" location="Paris, France" />
+				<Degree title="Brevet de Technicien Supérieur - SIO" date="2015 - 2017" company="Lycée Louis Armand" location="Paris, France" />
+			</section>
+		</div>
+		<footer class="hidden text-white sm:block">
+			<div class="cubano flex items-center justify-center gap-2 bg-blue-950 p-6">Cyril Dubet <span class="h-4 w-4 flex-shrink-0"><CopyrightIcon /></span> 2023</div>
+		</footer>
+	</main>
+</Layout>

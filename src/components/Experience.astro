@@ -1,0 +1,45 @@
+---
+import BuildingIcon from 'icons/Building.astro';
+import CalendarIcon from 'icons/Calendar.astro';
+import LocationDotIcon from 'icons/LocationDot.astro';
+import TagIcon from 'icons/Tag.astro';
+
+const { title, date, company, location, content, tags } = Astro.props;
+---
+
+<div class="flex w-full flex-col gap-4 rounded-lg bg-blue-200 p-4">
+	<h2 class="text-center text-[1.3rem] font-bold cubano">{title}</h2>
+	<div class="cubano flex flex-wrap justify-center gap-2">
+		<span class="flex items-center gap-2 rounded-lg p-2 bg-blue-100">
+			<span class="h-6 w-6 flex-shrink-0">
+				<CalendarIcon />
+			</span>
+			{date}
+		</span>
+		<span class=" flex items-center gap-2 rounded-lg p-2 bg-blue-100">
+			<span class="h-6 w-6 flex-shrink-0">
+				<BuildingIcon />
+			</span>
+			{company}
+		</span>
+		<span class=" flex items-center gap-2 rounded-lg p-2 bg-blue-100">
+			<span class="h-6 w-6 flex-shrink-0">
+				<LocationDotIcon />
+			</span>
+			{location}
+		</span>
+	</div>
+	<p>{content}</p>
+	<div class="cubano flex flex-wrap gap-2">
+		{
+			tags.map((tag: string) => (
+				<span class="flex items-center gap-2 rounded-lg p-2 bg-blue-100 text-sm">
+					<div class="h-4 w-4 flex-shrink-0">
+						<TagIcon />
+					</div>
+					{tag}
+				</span>
+			))
+		}
+	</div>
+</div>

@@ -1,0 +1,10 @@
+---
+const { name, progress } = Astro.props;
+---
+
+<div class="flex w-full flex-col gap-1 text-base font-bold">
+	{name}
+	<div class="flex h-2 w-full rounded-lg bg-gray-300">
+		<div class="flex h-full rounded-lg bg-blue-300" style=`width: ${progress}%`></div>
+	</div>
+</div>

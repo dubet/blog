@@ -1,0 +1,25 @@
+@font-face {
+	font-family: 'Cubano';
+	src: url('/fonts/Cubano.ttf') format('truetype');
+	font-display: swap;
+}
+
+body {
+	background-color: #000;
+}
+
+.cubano {
+	font-family: 'Cubano';
+}
+
+.cv-button {
+	@apply flex h-16 w-16 items-center justify-center rounded-lg bg-blue-950 text-white hover:text-blue-300 focus:text-blue-300;
+}
+
+.cv-info {
+	@apply flex flex-grow items-center gap-2 rounded-lg bg-blue-950 px-4 py-2 text-white;
+}
+
+.hero-button {
+	@apply flex h-16 w-16 items-center flex-shrink-0 justify-center rounded-lg border-4 hover:border-blue-300 hover:text-blue-300 focus:text-blue-300 focus:border-blue-300;
+}
