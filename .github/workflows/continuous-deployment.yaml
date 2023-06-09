@@ -17,4 +17,4 @@ jobs:
             rm -rf blog
             git clone https://github.com/dubet/blog.git
             cd blog
-            sudo docker compose up --build -d
+            docker compose up --build -d
