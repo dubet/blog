@@ -1,0 +1,20 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches: [ "master" ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create shared folders
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_SERVER }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_KEY }}
+          script: |
+            rm -rf blog
+            git clone https://github.com/dubet/blog.git
+            cd blog
+            sudo docker compose up --build -d
