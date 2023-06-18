@@ -1,5 +1,7 @@
 # dubet.fr
 
+[![Continuous Delivery](https://github.com/dubet/blog/actions/workflows/continuous-deployment.yaml/badge.svg?branch=master)](https://github.com/dubet/blog/actions/workflows/continuous-deployment.yaml)
+
 This is my personal website sources. Built with [Astro](https://astro.build/) and [TailwindCSS](https://tailwindcss.com/).
 
 ## Build & Run
