@@ -3,7 +3,6 @@ name: Continuous Delivery
 on:
   push:
     branches: [ "master" ]
-    paths: [ "./deploy/*", "./public/*", "./src/*", "docker-compose.yaml", "package.json" ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
