@@ -1,7 +1,6 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import compress from "astro-compress";
+import Tailwind from '@astrojs/tailwind';
+import Compress from "astro-compress";
 
-export default defineConfig({
-  integrations: [tailwind(), compress()]
-});
+export default {
+  integrations: [Tailwind(), Compress()]
+};
