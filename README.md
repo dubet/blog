@@ -65,5 +65,5 @@ docker compose up
 The continuous deployment pipeline running in this repository executes the following command to rebuild the images when a push to master occurs:
 
 ```bash
-docker compose up --build -d
+docker compose up --build -d --force-recreate
 ```
