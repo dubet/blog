@@ -18,4 +18,4 @@ jobs:
             rm -rf blog
             git clone https://github.com/dubet/blog.git
             cd blog
-            docker compose up --build -d --force-recreate
+            docker compose up --build -d --force-recreate --remove-orphans

@@ -1,0 +1,28 @@
+ssl_session_cache shared:SSL:10m;
+ssl_session_timeout 10m;
+
+# PROXY HTTP server
+server {
+	listen ${PROXY_DEFAULT_PORT};
+	return 301 https://$host$request_uri;
+}
+
+# PROXY HTTPS server
+server {
+	listen ${PROXY_SECURED_PORT} ssl;
+	keepalive_timeout 60;
+
+	ssl_certificate /etc/letsencrypt/live/dubet.fr/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/dubet.fr/privkey.pem;
+	ssl_dhparam /etc/letsencrypt/live/dubet.fr/dhparam.pem;
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_ciphers AES256+EECDH:AES256+EDH:!aNULL;
+	ssl_ecdh_curve secp384r1;
+	add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+	location / {
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_pass http://astro:${ASTRO_DEFAULT_PORT};
+	}
+}
