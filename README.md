@@ -42,7 +42,7 @@ Ports that are defined in the compose file are tightly coupled with the ones def
 
 We **MUST** make sure these ports do match between them. However, these files do not share the same format.
 
-We can already see the complexity involved by having to manage different configuration file formats with redundant data inside each of them, although we have only **two** services!
+We can already see the complexity involved by having to manage different configuration file formats with redundant data inside each of them, although we have only **two** services! :grin:
 
 On one hand, we have the `listen` and `proxy_pass` directives located in our nginx configurations, and on the other hand, we have the `ports` attributes in our compose file. These values **MUST** match.
 
@@ -65,7 +65,8 @@ The directory structure for generated certificates is pretty standard (`/etc/let
 We can generate a Diffie-Hellman parameters file with the following command using openssl:
 
 ```sh
-openssl dhparam -out dhparam.pem 4096
+openssl dhparam -out /etc/letsencrypt/live/${DOMAIN_NAME}/dhparam.pem 4096
+# This usually takes some time ... be patient
 ```
 
 Once it's done, we can deploy the application by starting the two services declared in the compose file:
