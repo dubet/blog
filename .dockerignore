@@ -1,3 +1,4 @@
+deploy/
 dist/
 .astro/
 .yarn/

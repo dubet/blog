@@ -1,7 +1,5 @@
 services:
   astro:
-    env_file:
-      - ./docker-compose.env
     networks:
       - web
     container_name: astro
@@ -10,10 +8,8 @@ services:
     volumes:
       - ./deploy/astro/default.conf.template:/etc/nginx/templates/default.conf.template
     ports:
-      - 9000
+      - $ASTRO_DEFAULT_PORT
   proxy:
-    env_file:
-      - ./docker-compose.env
     networks:
       - web
     container_name: proxy
@@ -22,7 +18,7 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt # Host-specific location of certificates
       - ./deploy/proxy/default.conf.template:/etc/nginx/templates/default.conf.template
     ports:
-      - 80:8080
-      - 443:8081
+      - 80:$PROXY_DEFAULT_PORT
+      - 443:$PROXY_SECURED_PORT
 networks:
   web:

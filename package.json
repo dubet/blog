@@ -1,22 +1,23 @@
 {
-	"name": "blog",
-	"version": "1.0.0",
-	"description": "My personal blog",
-	"main": "index.js",
-	"repository": " https://github.com/dubet/blog.git",
-	"author": "Cyril Dubet <cyril@dubet.fr>",
-	"license": "UNLICENSED",
-	"private": true,
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro"
-	},
-	"dependencies": {
-		"@astrojs/tailwind": "5.1.0",
-		"astro": "4.2.2",
-		"astro-compress": "astro-community/AstroCompress#no-sharp",
-		"tailwindcss": "3.4.1"
-	}
+  "name": "blog",
+  "packageManager": "yarn@4.1.1",
+  "version": "1.0.0",
+  "description": "My personal blog",
+  "main": "index.js",
+  "repository": " https://github.com/dubet/blog.git",
+  "author": "Cyril Dubet <cyril@dubet.fr>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "5.1.0",
+    "astro": "4.2.2",
+    "astro-compress": "astro-community/AstroCompress#no-sharp",
+    "tailwindcss": "3.4.1"
+  }
 }
