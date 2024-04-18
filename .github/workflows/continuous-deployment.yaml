@@ -15,7 +15,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.REMOTE_KEY }}
           script: |
+            docker compose --env-file blog/docker-compose.env --project-directory blog down --remove-orphans --volumes --rmi all
             rm -rf blog
             git clone https://github.com/dubet/blog.git blog
-            cd blog
-            docker compose up --build -d --force-recreate --remove-orphans
+            docker compose --env-file blog/docker-compose.env --project-directory blog up --build --detach --force-recreate --remove-orphans

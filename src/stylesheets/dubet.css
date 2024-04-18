@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'Cubano';
-	src: url('/fonts/Cubano.ttf') format('truetype');
-	font-display: swap;
+	src: url('../fonts/Cubano.ttf') format('truetype');
+	font-display: block;
 }
 
 body {

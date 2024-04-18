@@ -10,6 +10,7 @@ server {
 # PROXY HTTPS server
 server {
 	listen ${PROXY_SECURED_PORT} ssl;
+	http2 on;
 	keepalive_timeout 60;
 
 	ssl_certificate /etc/letsencrypt/live/dubet.fr/fullchain.pem;

@@ -34,7 +34,7 @@ The compose file `docker-compose.yml` is the central file which is used during b
 Regarding service publication in the compose file, the following services are configuring their ports as follows:
 
 - For `proxy` service (frontend), ports **8080** for HTTP and **8081** for HTTPS are exposed and **mapped** to real world standard ports (**80** and **443** respectively)
-- For `astro` service (backend), port 9000 for HTTP is exposed, but only **internally** (there is no port mapping)
+- For `astro` service (backend), port 9090 for HTTP is exposed, but only **internally** (there is no port mapping)
 
 #### The problem
 
