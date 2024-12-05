@@ -1,0 +1,27 @@
+---
+import CopyrightIcon from '@icons/Copyright.astro';
+import { Locale, COPYRIGHT_USER, COPYRIGHT_DATE } from '@/Common.ts';
+
+interface Props {
+	locale: Locale;
+};
+
+const { locale } = Astro.props;
+
+const copyrightClaims = [
+	{ "locale": Locale.English, "text": "All rights reserved." },
+	{ "locale": Locale.French, "text": "Tous droits réservés." },
+];
+---
+
+<footer>
+	<div class="cubano text-center p-6 bg-1st fg-white md:text-lg sm:text-sm">
+		<div class="flex flex-wrap gap-2 text-center content-center items-center justify-center">
+			<span>Copyright</span>
+			<span class="md:w-4 md:h-4 sm:w-3 sm:h-3"><CopyrightIcon /></span>
+			<span>{COPYRIGHT_DATE}</span>
+			<span>{COPYRIGHT_USER}.</span>
+			<span>{copyrightClaims.find((c) => c.locale == locale)?.text}</span>
+		</div>
+	</div>
+</footer>

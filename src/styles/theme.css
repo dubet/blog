@@ -1,0 +1,84 @@
+:root {
+	--color-1st: #082736;
+	--color-2nd: #FECF71;
+	--color-3rd: #DED5BF;
+	--color-4th: #FDEAC1;
+	--color-black: #353535;
+	--color-white: #DED5BF;
+}
+
+@font-face {
+	font-family: 'Cubano';
+	src: url('/fonts/Cubano.ttf') format('truetype');
+	font-display: block;
+}
+
+body {
+	background-color: var(--color-1st);
+}
+
+.cubano {
+	font-family: 'Cubano';
+}
+
+.experience-tag {
+	@apply flex items-center gap-2 rounded-lg p-2 text-sm bg-3rd;
+}
+
+.vignette-item {
+	@apply flex items-center gap-2 rounded-lg p-2 bg-3rd;
+}
+
+.bg-2nd {
+	background-color: var(--color-2nd);
+}
+
+.bg-1st {
+	background-color: var(--color-1st);
+}
+
+.bg-3rd {
+	background-color: var(--color-3rd);
+}
+
+.bg-4th {
+	background-color: var(--color-4th);
+}
+
+.fg-black {
+	color: var(--color-black);
+}
+
+.fg-white {
+	color: var(--color-white);
+}
+
+.fg-2nd {
+	color: var(--color-2nd);
+}
+
+.hero-button {
+	@apply flex h-16 w-16 items-center justify-center rounded-lg bg-2nd fg-black;
+
+	&:focus,
+	&:hover {
+		@apply bg-3rd cursor-pointer;
+	}
+}
+
+.any-button {
+	@apply flex h-16 w-16 items-center justify-center rounded-lg bg-1st fg-white;
+
+	&:focus,
+	&:hover {
+		@apply fg-2nd;
+	}
+}
+
+.info {
+	@apply flex flex-grow items-center gap-2 rounded-lg px-4 py-2 bg-1st fg-white;
+}
+
+.section-title {
+	@apply cubano flex w-full items-center gap-2 rounded-lg px-2 py-2 text-xl font-bold uppercase bg-1st fg-white;
+}

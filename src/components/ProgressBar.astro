@@ -1,0 +1,15 @@
+---
+interface Props {
+	name: string;
+	progress: number;
+}
+
+const { name, progress } = Astro.props;
+---
+
+<div class="flex w-full flex-col gap-1 text-base font-bold fg-black">
+	{name}
+	<div class="flex h-2 bg-2nd rounded-md">
+		<div class="flex bg-1st rounded-md" style=`width: ${progress}%;`></div>
+	</div>
+</div>

@@ -1,0 +1,214 @@
+---
+import Layout from '@layouts/Default.astro';
+
+import Card from '@components/Card.astro';
+import ProgressBar from '@components/ProgressBar.astro';
+import ScrollButton from '@components/ScrollButton.astro';
+import Footer from '@components/Footer.astro';
+
+import GithubIcon from '@icons/Github.astro';
+import EnvelopeIcon from '@icons/Envelope.astro';
+import BriefcaseIcon from '@icons/Briefcase.astro';
+import UserTieIcon from '@icons/UserTie.astro';
+import LocationDotIcon from '@icons/LocationDot.astro';
+import CakeCandlesIcon from '@icons/CakeCandles.astro';
+import GraduationCapIcon from '@icons/GraduationCap.astro';
+import CodeIcon from '@icons/Code.astro';
+import LanguageIcon from '@icons/Language.astro';
+
+import { Locale, DEFAULT_LOCALE } from '@/Common.ts';
+
+const DESCRIPTION: string = `
+	<p>Avec plus de 5 ans d'expérience dans des projets d'ingénierie logicielle, je me suis spécialisé au fil du temps dans le développement backend avec des langages de bas niveau sur des problématiques de sécurité ou de volumétrie transactionnelle. J'aime écrire du code efficace et fournir des solutions simples et élégantes à des problèmes complexes.</p>
+	<p>Principalement intéressé par la sécurité et la programmation concurrente, je possède aussi des compétences opérationnelles issues des méthodologies DevOps, telles que l'intégration continue, le déploiement continu et l'amélioration continue, avec l'automatisation comme fer de lance, aujourd'hui incontournable dans le métier.</p>
+	<p>J'évolue aujourd'hui dans des missions très variées au sein d'Avisto chez des clients de rayonnement international.</p>
+`
+
+const EXPERIENCE = {
+	languages: [
+		{ "label": "Français", "level": 100 },
+		{ "label": "Anglais", "level": 100 },
+		{ "label": "Allemand" , "level": 30  },
+	],
+	programmingLanguages: [
+		{ "label": "C++", "level": 95 },
+		{ "label": "Python", "level": 80 },
+		{ "label": "C#", "level": 70 },
+		{ "label": "Go", "level": 70 },
+		{ "label": "Rust", "level": 50 },
+	],
+	education: [
+		{
+			"label": "Diplôme d'Ingénieur en Systèmes d'information",
+			"years": "2017 - 2020",
+			"institution": "CNAM",
+			"location": "Paris, France"
+		},
+		{
+			"label": "Brevet de Technicien Supérieur - SIO",
+			"years": "2015 - 2017",
+			"institution": "Lycée Louis Armand",
+			"location": "Paris, France"
+		},
+	],
+	employment: [
+		{
+			"label": "Ingénieur DevOps",
+			"years": "Depuis 2024",
+			"company": "Avisto",
+			"location": "Cachan, France",
+			"content": "Déploiement et intégration de solutions KPI sur des environnements distribués. Maintenance des composants et des pipelines d'intégration. Réalisation de déploiements automatisés et support des équipes de vérification et d'intégration dans un contexte international et multiculturel.",
+			"tags": [ "Python", "Ansible", "Kubernetes", "Grafana", "C#", "Bash", "Helm" ]
+		},
+		{
+			"label": "Ingénieur C++",
+			"years": "2023",
+			"company":"Avisto",
+			"location": "Cachan, France",
+			"content": "Refonte d'une application graphique d'initialisation et de gestion de pare-feux.",
+			"tags": [ "C++", "Qt" ]
+		},
+		{
+			"label": "Ingénieur C++ DevOps",
+			"years": "2022 - 2023",
+			"company": "Avisto",
+			"location": "Cachan, France",
+			"content": "Maintenance d'un framework transactionnel middleware et d'une application de routage cloud native sur les PaaS Microsoft Azure. Participation à des ateliers techniques dans le cadre de la refonte d'une solution capable de transmettre des données sensibles (type carte bancaire) à travers une chaîne de services afin de satisfaire les exigences du standard PCI DSS.",
+			"tags": [ "C++", "Python", "Kubernetes", "Artifactory", "Helm", "ArgoCD", "Prometheus", "Boost" ]
+		},
+		{
+			"label": "Ingénieur Sécurité C++",
+			"years": "2020 - 2022",
+			"company": "Silicom",
+			"location": "Guyancourt, France",
+			"content": "Maintien d'un ensemble de composants pour la transmission sécurisée de métriques de performance réseau (latence, délai...) entre des serveurs embarqués GNU/Linux situés sur des plates-formes navales mobiles. Développement de pipelines pour automatiser les tests et améliorer la qualité (couverture de code).",
+			"tags": [ "C++", "Ansible", "Jenkins", "OpenSSL", "Kafka", "SonarQube", "SNMP", "Docker" ]
+		},
+		{
+			"label": "Testeur Applicatif (Alternance)",
+			"years": "2017 - 2020",
+			"company": "EDF",
+			"location": "Saint-Denis, France",
+			"content": "Test et suivi d'une application de surveillance critique au coeur des métiers de la sûreté nucléaire. Spécification technique et fonctionnelle de la refonte de cette application en alignement avec les besoins métiers (performance, fiabilité, robustesse). Développement de macros VBA Excel pour l'édition de documents critique à forte valeur ajoutée.",
+			"tags": [ "PHP", "Javascript", "MySQL", "VBA" ]
+		},
+		{
+			"label": "Développeur Web (Stage)",
+			"years": "2017",
+			"company": "RATP",
+			"location": "Saint-Ouen, France",
+			"content": "Maintenance d'un portail Web applicatif en PHP / Javascript. Optimisation des requêtes SQL et correction de bogues. Développement de fonctionnalités pour une application de gestion des ordres de travail.",
+			"tags": [ "PHP", "Javascript", "MySQL" ]
+		},
+		{
+			"label": "Administrateur Systèmes & Réseaux (Stage)",
+			"years": "2016",
+			"company": "RATP",
+			"location": "Saint-Ouen, France",
+			"content": "Développement d'un daemon de gestion des accès SFTP sur des serveurs RHEL5. Montée en compétences sur l'administration système et les réseaux.",
+			"tags": [ "Bash", "VirtualBox" ]
+		},
+	]
+};
+
+const CURRENT_LOCALE: Locale = Locale.French;
+---
+
+<Layout lang="fr" title="Accueil">
+	<header class="hidden h-lvh flex-col items-center justify-center gap-4 text-white sm:flex bg-1st">
+		<div class="cubano flex items-center gap-4">
+			{Object.values(Locale).map((l: Locale) => (
+				l == CURRENT_LOCALE
+					? <div class="hero-button text-xl">{l}</div>
+					: l == DEFAULT_LOCALE
+						? <a href="/" class="hero-button text-xl">{l}</a>
+						: <a href={l.toLowerCase()} class="hero-button text-xl">{l}</a>
+			))}
+		</div>
+		<h1 class="cubano text-7xl font-thin fg-white">dubet.fr</h1>
+		<ScrollButton />
+	</header>
+	<main class="hidden sm:block bg-4th">
+		<div class="mx-auto grid grid-cols-1 gap-4 px-4 py-8 md:container lg:grid-cols-2 bg-4th">
+			<section class="flex flex-col items-start gap-4">
+				<div class="flex w-full items-center justify-center">
+					<img class="h-64 w-64 rounded-full border-8 md:h-80 md:w-80" alt="Photograph of Cyril Dubet" loading="lazy" src="images/me.webp" style="border-color: var(--color-1st)" />
+				</div>
+				<div class="flex w-full items-center justify-center gap-4">
+					<a aria-label="email-contact" href="mailto:cyril@dubet.fr" class="any-button">
+						<div class="h-10 w-10">
+							<EnvelopeIcon />
+						</div>
+					</a>
+					<a aria-label="github-profile" target="_blank" href="https://github.com/dubet" class="any-button">
+						<div class="h-10 w-10">
+							<GithubIcon />
+						</div>
+					</a>
+				</div>
+				<div class="cubano text-md flex w-full flex-wrap justify-center gap-2">
+					<div class="info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<UserTieIcon />
+						</span>
+						<span>Cyril Dubet</span>
+					</div>
+					<div class="info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<LocationDotIcon />
+						</span>
+						<span>Paris, France</span>
+					</div>
+					<div class="info">
+						<span class="h-6 w-6 flex-shrink-0">
+							<CakeCandlesIcon />
+						</span>
+						<span>24 décembre 1996 (27 ans)</span>
+					</div>
+				</div>
+				<div class="fg-black">
+					<Fragment set:html={DESCRIPTION} />
+				</div>
+				<h1 class="section-title">
+					<span class="h-8 w-8 flex-shrink-0">
+						<LanguageIcon />
+					</span>
+					<span>Langues</span>
+				</h1>
+				{EXPERIENCE.languages.map((l) => (
+					<ProgressBar name={l.label} progress={l.level} />
+				))}
+				<h1 class="section-title">
+					<span class="h-8 w-8 flex-shrink-0">
+						<CodeIcon />
+					</span>
+					<span>Programmation</span>
+				</h1>
+				{EXPERIENCE.programmingLanguages.map((pl) => (
+					<ProgressBar name={pl.label} progress={pl.level} />
+				))}
+				<h1 class="section-title">
+					<span class="h-8 w-8 flex-shrink-0">
+						<GraduationCapIcon />
+					</span>
+					<span>Diplômes</span>
+				</h1>
+				{EXPERIENCE.education.map((e) => (
+					<Card label={e.label} years={e.years} host={e.institution} location={e.location} />
+				))}
+			</section>
+			<section class="flex flex-col items-start gap-4">
+				<h1 class="section-title">
+					<span class="h-8 w-8 flex-shrink-0">
+						<BriefcaseIcon />
+					</span>
+					<span>Expériences Professionnelles</span>
+				</h1>
+				{EXPERIENCE.employment.map((e) => (
+					<Card label={e.label} years={e.years} host={e.company} location={e.location} content={e.content} tags={e.tags} />
+				))}
+			</section>
+		</div>
+		<Footer locale={CURRENT_LOCALE} />
+	</main>
+</Layout>

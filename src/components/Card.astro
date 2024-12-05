@@ -1,0 +1,54 @@
+---
+import BuildingIcon from '@icons/Building.astro';
+import CalendarIcon from '@icons/Calendar.astro';
+import LocationDotIcon from '@icons/LocationDot.astro';
+import TagIcon from '@icons/Tag.astro';
+
+interface Props {
+	label: string;
+	years: string;
+	host: string;
+	location: string;
+	content?: string;
+	tags?: string[];
+}
+
+const { label, years, host, location, content, tags } = Astro.props;
+---
+
+<div class="flex w-full flex-col gap-4 rounded-lg p-4 bg-2nd fg-black">
+	<h2 class="text-center text-[1.3rem] font-bold cubano">{label}</h2>
+	<div class="cubano flex flex-wrap justify-center gap-2">
+		<span class="vignette-item">
+			<span class="h-6 w-6 flex-shrink-0">
+				<CalendarIcon />
+			</span>
+			{years}
+		</span>
+		<span class="vignette-item">
+			<span class="h-6 w-6 flex-shrink-0">
+				<BuildingIcon />
+			</span>
+			{host}
+		</span>
+		<span class="vignette-item">
+			<span class="h-6 w-6 flex-shrink-0">
+				<LocationDotIcon />
+			</span>
+			{location}
+		</span>
+	</div>
+	{
+		content ? <p>{content}</p> : null 
+	}
+	<div class="cubano flex flex-wrap justify-center gap-2">
+		{
+			tags?.map((t: string) => (
+				<span class="experience-tag">
+					<div class="h-4 w-4 flex-shrink-0"><TagIcon /></div>
+					{t}
+				</span>
+			))
+		}
+	</div>
+</div>

@@ -1,0 +1,27 @@
+---
+import FaceWithMonocle from '@emojis/FaceWithMonocle.astro';
+import '../styles/theme.css';
+
+interface Props {
+	title: string;
+	lang: string;
+}
+
+const { title, lang } = Astro.props;
+---
+
+<html lang={lang}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="A concise overview of my engineering course in professional software industry.">
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+		<div class="flex h-screen w-screen items-center justify-center bg-black px-2 sm:hidden">
+			<FaceWithMonocle />
+		</div>
+	</body>
+</html>

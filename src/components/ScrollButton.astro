@@ -1,0 +1,20 @@
+---
+import ArrowDownIcon from '@icons/ArrowDown.astro';
+---
+
+<div id="scroll-button" class="hero-button cursor-pointer">
+	<div class="h-10 w-10">
+		<ArrowDownIcon />
+	</div>
+</div>
+
+<script>
+	const button = document.getElementById('scroll-button');
+	const target = document.getElementsByTagName('main');
+
+	if (button !== null && target !== undefined && target.length > 0) {
+		button.addEventListener('click', () => {
+			target[0].scrollIntoView({ behavior: 'smooth'});
+		});
+	}
+</script>
