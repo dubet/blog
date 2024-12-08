@@ -1,0 +1,120 @@
+{
+	"copyright.claim": "Tous droits réservés.",
+	"meta": {
+		"description": "Un résumé concis de mon parcours d'ingénieur dans l'industrie du logicielle."
+	},
+	"404": "La page demandée n'existe pas (...encore ?)",
+	"index": {
+		"title": "Accueil",
+		"age": "27 ans",
+		"birthdate": "24 Décembre 1996",
+		"description": [
+			"Avec plus de 5 ans d'expérience dans des projets d'ingénierie logicielle, je me suis spécialisé au fil du temps dans le développement backend avec des langages de bas niveau sur des problématiques de sécurité ou de volumétrie transactionnelle. J'aime écrire du code efficace et fournir des solutions simples et élégantes à des problèmes complexes.",
+			"Principalement intéressé par la sécurité et la programmation concurrente, je possède aussi des compétences opérationnelles issues des méthodologies DevOps, telles que l'intégration continue, le déploiement continu et l'amélioration continue, avec l'automatisation comme fer de lance, aujourd'hui incontournable dans le métier.",
+			"J'évolue aujourd'hui dans des missions très variées au sein d'Avisto chez des clients de rayonnement international."
+		],
+		"languageTitle": "Langues",
+		"language": {
+			"french": "Français",
+			"english": "Anglais",
+			"german": "Allemand"
+		},
+		"programmingTitle": "Développement",
+		"educationTitle": "Diplômes",
+		"education": [
+			{
+				"label": "Diplôme d'Ingénieur en Systèmes d'information",
+				"years": "2017 - 2020",
+				"institution": "CNAM",
+				"location": "Paris, France"
+			},
+			{
+				"label": "Brevet de Technicien Supérieur - SIO",
+				"years": "2015 - 2017",
+				"institution": "Lycée Louis Armand",
+				"location": "Paris, France"
+			}
+		],
+		"employmentTitle": "Expériences Professionnelles",
+		"employment": [
+			{
+				"label": "Ingénieur DevOps",
+				"years": "Depuis 2024",
+				"company": "Avisto",
+				"location": "Cachan, France",
+				"content": [
+					"Déploiement et intégration de solutions KPI sur des environnements distribués",
+					"Maintenance des composants et des pipelines d'intégration",
+					"Réalisation de déploiements automatisés et support des équipes de vérification et d'intégration dans un contexte international et multiculturel"
+				],
+				"tags": [ "Python", "Ansible", "Kubernetes", "Grafana", "C#", "Bash", "Helm" ]
+			},
+			{
+				"label": "Ingénieur C++",
+				"years": "2023",
+				"company":"Avisto",
+				"location": "Cachan, France",
+				"content": [
+					"Refonte d'une application graphique d'initialisation et de gestion de pare-feux"
+				],
+				"tags": [ "C++", "Qt" ]
+			},
+			{
+				"label": "Ingénieur C++ DevOps",
+				"years": "2022 - 2023",
+				"company": "Avisto",
+				"location": "Cachan, France",
+				"content": [
+					"Maintenance d'un framework transactionnel middleware et d'une application de routage cloud native sur les PaaS Microsoft Azure",
+					"Participation à des ateliers techniques dans le cadre de la refonte d'une solution capable de transmettre des données sensibles (type carte bancaire) à travers une chaîne de services afin de satisfaire les exigences du standard PCI DSS"
+				],
+				"tags": [ "C++", "Python", "Kubernetes", "Artifactory", "Helm", "ArgoCD", "Prometheus", "Boost" ]
+			},
+			{
+				"label": "Ingénieur Sécurité C++",
+				"years": "2020 - 2022",
+				"company": "Silicom",
+				"location": "Guyancourt, France",
+				"content": [
+					"Maintien d'un ensemble de composants pour la transmission sécurisée de métriques de performance réseau (latence, délai...) entre des serveurs embarqués GNU/Linux situés sur des plates-formes navales mobiles","Développement de pipelines pour automatiser les tests et améliorer la qualité (couverture de code)"
+				],
+				"tags": [ "C++", "Ansible", "Jenkins", "OpenSSL", "Kafka", "SonarQube", "SNMP", "Docker" ]
+			},
+			{
+				"label": "Testeur Applicatif (Alternance)",
+				"years": "2017 - 2020",
+				"company": "EDF",
+				"location": "Saint-Denis, France",
+				"content": [
+					"Test et suivi d'une application de surveillance critique au coeur des métiers de la sûreté nucléaire",
+					"Spécification technique et fonctionnelle de la refonte de cette application en alignement avec les besoins métiers (performance, fiabilité, robustesse)",
+					"Développement de macros VBA Excel pour l'édition de documents critique à forte valeur ajoutée"
+				],
+				"tags": [ "PHP", "Javascript", "MySQL", "VBA" ]
+			},
+			{
+				"label": "Développeur Web (Stage)",
+				"years": "2017",
+				"company": "RATP",
+				"location": "Saint-Ouen, France",
+				"content": [
+					"Maintenance d'un portail Web applicatif en PHP / Javascript",
+					"Optimisation des requêtes SQL et correction de bogues",
+					"Développement de fonctionnalités pour une application de gestion des ordres de travail"
+				],
+				"tags": [ "PHP", "Javascript", "MySQL" ]
+			},
+			{
+				"label": "Administrateur Systèmes & Réseaux (Stage)",
+				"years": "2016",
+				"company": "RATP",
+				"location": "Saint-Ouen, France",
+				"content": [
+					"Développement d'un daemon de gestion des accès SFTP sur des serveurs RHEL5",
+					"Montée en compétences sur l'administration système et les réseaux"
+				],
+				"tags": [ "Bash", "VirtualBox" ]
+			}
+		]
+	}
+}

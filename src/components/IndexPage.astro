@@ -1,0 +1,135 @@
+---
+import Layout from '@layouts/Default.astro';
+
+import Card from '@components/Card.astro';
+import ProgressBar from '@components/ProgressBar.astro';
+import HeroHeader from './HeroHeader.astro';
+import Footer from '@components/Footer.astro';
+
+import GithubIcon from '@icons/Github.astro';
+import EnvelopeIcon from '@icons/Envelope.astro';
+import BriefcaseIcon from '@icons/Briefcase.astro';
+import UserIcon from '@icons/User.astro';
+import LocationDotIcon from '@icons/LocationDot.astro';
+import CakeCandlesIcon from '@icons/CakeCandles.astro';
+import GraduationCapIcon from '@icons/GraduationCap.astro';
+import CodeIcon from '@icons/Code.astro';
+import LanguageIcon from '@icons/Language.astro';
+
+import { Locale, type EducationEntry, type EmploymentEntry, initLocale } from '@common';
+
+interface Props {
+	locale: Locale;
+};
+
+const { locale } = Astro.props;
+
+const T = initLocale(locale);
+
+const CV = {
+	description: T("index.description", { returnObjects: true }) as string[],
+	languages: [
+		{ "label": T("index.language.french"), "level": 100 },
+		{ "label": T("index.language.english"), "level": 100 },
+		{ "label": T("index.language.german") , "level": 60 },
+	],
+	programming: [
+		{ "label": "C++", "level": 95 },
+		{ "label": "Python", "level": 90 },
+		{ "label": "C#", "level": 80 },
+		{ "label": "Go", "level": 80 },
+		{ "label": "Rust", "level": 60 },
+	],
+	education: T("index.education", { returnObjects: true }) as EducationEntry[],
+	employment: T("index.employment", { returnObjects: true }) as EmploymentEntry[],
+};
+---
+
+<Layout locale={locale} title={T("index.title")}>
+	<HeroHeader locale={locale} />
+	<main class="bg-4th">
+		<div class="mx-auto grid grid-cols-1 gap-4 px-4 py-8 md:container lg:grid-cols-2 bg-4th">
+			<section class="flex flex-col items-start gap-4">
+				<div class="flex w-full items-center justify-center">
+					<img class="h-64 w-64 rounded-full border-8 md:h-80 md:w-80" alt="Photograph of Cyril Dubet" loading="lazy" src="/assets/images/me.webp" style="border-color: var(--color-1st)" />
+				</div>
+				<div class="flex w-full items-center justify-center gap-4">
+					<a aria-label="email-contact" href="mailto:cyril@dubet.fr" class="any-button">
+						<div class="h-10 w-10">
+							<EnvelopeIcon />
+						</div>
+					</a>
+					<a aria-label="github-profile" target="_blank" href="https://github.com/dubet" class="any-button">
+						<div class="h-10 w-10">
+							<GithubIcon />
+						</div>
+					</a>
+				</div>
+				<div class="cubano text-md flex w-full flex-wrap justify-center gap-2">
+					<div class="info">
+						<span class="icon">
+							<UserIcon />
+						</span>
+						<span>Cyril Dubet</span>
+					</div>
+					<div class="info">
+						<span class="icon">
+							<LocationDotIcon />
+						</span>
+						<span>Paris, France</span>
+					</div>
+					<div class="info">
+						<span class="icon">
+							<CakeCandlesIcon />
+						</span>
+						<span>{T("index.birthdate") + " (" + T("index.age") + ")"}</span>
+					</div>
+				</div>
+				<div class="fg-black">
+					{(CV.description).map((s: string) => (
+						<p class="py-1 text-center">{s}</p>
+					))}
+				</div>
+				<h1 class="section-title">
+					<span class="h-8 w-8 flex-shrink-0">
+						<LanguageIcon />
+					</span>
+					<span>{T("index.languageTitle")}</span>
+				</h1>
+				{(CV.languages).map((l) => (
+					<ProgressBar label={l.label} level={l.level} />
+				))}
+				<h1 class="section-title">
+					<span class="h-8 w-8 flex-shrink-0">
+						<CodeIcon />
+					</span>
+					<span>{T("index.programmingTitle")}</span>
+				</h1>
+				{(CV.programming).map((p) => (
+					<ProgressBar label={p.label} level={p.level} />
+				))}
+				<h1 class="section-title">
+					<span class="h-8 w-8 flex-shrink-0">
+						<GraduationCapIcon />
+					</span>
+					<span>{T("index.educationTitle")}</span>
+				</h1>
+				{(CV.education).map((e) => (
+					<Card label={e.label} years={e.years} host={e.institution} location={e.location} />
+				))}
+			</section>
+			<section class="flex flex-col items-start gap-4">
+				<h1 class="section-title">
+					<span class="h-8 w-8 flex-shrink-0">
+						<BriefcaseIcon />
+					</span>
+					<span>{T("index.employmentTitle")}</span>
+				</h1>
+				{(CV.employment).map((e) => (
+					<Card label={e.label} years={e.years} host={e.company} location={e.location} content={e.content} tags={e.tags} />
+				))}
+			</section>
+		</div>
+	</main>
+	<Footer locale={locale} />
+</Layout>

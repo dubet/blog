@@ -1,6 +1,6 @@
 ---
 import CopyrightIcon from '@icons/Copyright.astro';
-import { Locale, COPYRIGHT_USER, COPYRIGHT_DATE } from '@/Common.ts';
+import { initLocale, Locale, COPYRIGHT_DATE, COPYRIGHT_USER } from '@common';
 
 interface Props {
 	locale: Locale;
@@ -8,10 +8,8 @@ interface Props {
 
 const { locale } = Astro.props;
 
-const copyrightClaims = [
-	{ "locale": Locale.English, "text": "All rights reserved." },
-	{ "locale": Locale.French, "text": "Tous droits réservés." },
-];
+const T = initLocale(locale);
+
 ---
 
 <footer>
@@ -21,7 +19,7 @@ const copyrightClaims = [
 			<span class="md:w-4 md:h-4 sm:w-3 sm:h-3"><CopyrightIcon /></span>
 			<span>{COPYRIGHT_DATE}</span>
 			<span>{COPYRIGHT_USER}.</span>
-			<span>{copyrightClaims.find((c) => c.locale == locale)?.text}</span>
+			<span>{T("copyright.claim")}</span>
 		</div>
 	</div>
 </footer>

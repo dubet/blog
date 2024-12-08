@@ -1,27 +1,33 @@
 ---
-import FaceWithMonocle from '@emojis/FaceWithMonocle.astro';
-import '../styles/theme.css';
+import ScreenTooSmall from '@components/ScreenTooSmall.astro';
+
+import '@styles/theme.css';
+
+import { initLocale, Locale } from '@common';
 
 interface Props {
 	title: string;
-	lang: string;
+	locale: Locale;
 }
 
-const { title, lang } = Astro.props;
+const { title, locale } = Astro.props;
+
+const T = initLocale(locale);
+
 ---
 
-<html lang={lang}>
+<html lang={locale}>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<link rel="icon" href="/assets/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content="A concise overview of my engineering course in professional software industry.">
+		<meta name="description" content={T("meta.description")}>
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
-		<div class="flex h-screen w-screen items-center justify-center bg-black px-2 sm:hidden">
-			<FaceWithMonocle />
+		<div class="hidden sm:block">
+			<slot />
 		</div>
+		<ScreenTooSmall />
 	</body>
 </html>

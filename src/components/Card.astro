@@ -9,7 +9,7 @@ interface Props {
 	years: string;
 	host: string;
 	location: string;
-	content?: string;
+	content?: string[];
 	tags?: string[];
 }
 
@@ -39,7 +39,7 @@ const { label, years, host, location, content, tags } = Astro.props;
 		</span>
 	</div>
 	{
-		content ? <p>{content}</p> : null 
+		content ? <ul class="list-disc px-4">{content.map((entry: string) => <li>{entry}</li>)}</ul> : null
 	}
 	<div class="cubano flex flex-wrap justify-center gap-2">
 		{

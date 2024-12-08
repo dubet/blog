@@ -9,7 +9,7 @@
 
 @font-face {
 	font-family: 'Cubano';
-	src: url('/fonts/Cubano.ttf') format('truetype');
+	src: url('/assets/fonts/Cubano.ttf') format('truetype');
 	font-display: block;
 }
 
@@ -62,7 +62,7 @@ body {
 
 	&:focus,
 	&:hover {
-		@apply bg-3rd cursor-pointer;
+		@apply bg-3rd;
 	}
 }
 
@@ -77,6 +77,10 @@ body {
 
 .info {
 	@apply flex flex-grow items-center gap-2 rounded-lg px-4 py-2 bg-1st fg-white;
+}
+
+.info .icon {
+	@apply h-6 w-6;
 }
 
 .section-title {

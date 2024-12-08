@@ -1,0 +1,121 @@
+{
+	"copyright.claim": "All rights reserved.",
+	"meta": {
+		"description": "A concise overview of my engineering course in professional software industry."
+	},
+	"404": "The requested page does not exist (...yet?)",
+	"index": {
+		"title": "Home",
+		"age": "27 y.o.",
+		"birthdate": "December 24th, 1996",
+		"description": [
+			"With more than 5 years of experience in software engineering projects, I have specialized over time in backend development with strong security and performance constraints using low-level languages. I enjoy writing efficient code and providing simple and elegant solutions to complex problems.",
+			"Primarily interested in security and concurrent programming, I also have devops skills under my belt: continuous integration, continuous deployment and continuous improvement, with automation as my main focus, which are the most essential skills today.",
+			"I am evolving nowadays in diverse missions in Avisto for major clients with international reputation."
+		],
+		"languageTitle": "Languages",
+		"language": {
+			"french": "French",
+			"english": "English",
+			"german": "German"
+		},
+		"programmingTitle": "Programming",
+		"educationTitle": "Education",
+		"education": [
+			{
+				"label": "Engineer's Degree - Information Systems",
+				"years": "2017 - 2020",
+				"institution": "CNAM",
+				"location": "Paris, France"
+			},
+			{
+				"label": "Higher Technician Diploma - IT Services for Organizations",
+				"years": "2015 - 2017",
+				"institution": "Lycée Louis Armand",
+				"location": "Paris, France"
+			}
+		],
+		"employmentTitle": "Work Experiences",
+		"employment": [
+			{
+				"label": "DevOps Engineer",
+				"years": "Since 2024",
+				"company": "Avisto",
+				"location": "Cachan, France",
+				"content": [
+					"Deployed and integrated KPI solutions for multiple distributed on-premise clusters",
+					"Maintained components and integrations pipelines",
+					"Automated deployments and supported VnV teams in an international and multicultural context"
+				],
+				"tags": [ "Python", "Ansible", "Kubernetes", "Grafana", "C#", "Bash", "Helm" ]
+			},
+			{
+				"label": "C++ Engineer",
+				"years": "2023",
+				"company":"Avisto",
+				"location": "Cachan, France",
+				"content": [
+					"Redesigned a graphical desktop application for initializing, verifying and managing firewalls"
+				],
+				"tags": [ "C++", "Qt" ]
+			},
+			{
+				"label": "C++ DevOps Engineer",
+				"years": "2022 - 2023",
+				"company": "Avisto",
+				"location": "Cachan, France",
+				"content": [
+					"Maintained a transactional middleware framework and a cloud native routing application on Microsoft Azure PaaS",
+					"Participated in technical workshops for the redesign of a solution capable of transmitting sensitive data (such as credit cards) through a chain of untrusted services in order to meet the requirements of the PCI DSS standard"
+				],
+				"tags": [ "C++", "Python", "Kubernetes", "Artifactory", "Helm", "ArgoCD", "Prometheus", "Boost" ]
+			},
+			{
+				"label": "C++ Security Engineer",
+				"years": "2020 - 2022",
+				"company": "Silicom",
+				"location": "Guyancourt, France",
+				"content": [
+					"Maintained a set of components for the secure transmission of network performance metrics (latency, delay...) between GNU/Linux embedded servers located on mobile naval platforms",
+					"Developed pipelines to automate testing and improve quality (code coverage)"
+				],
+				"tags": [ "C++", "Ansible", "Jenkins", "OpenSSL", "Kafka", "SonarQube", "SNMP", "Docker" ]
+			},
+			{
+				"label": "QA Tester (Apprenticeship)",
+				"years": "2017 - 2020",
+				"company": "EDF",
+				"location": "Saint-Denis, France",
+				"content": [
+					"Tested and monitored a critical surveillance application at the heart of the nuclear safety business",
+					"Specified technical and functional requirements for the redesign of the solution in alignment with business needs (performance, reliability, robustness)",
+					"Developed of VBA Excel macros for the edition of critical documents with high added value"
+				],
+				"tags": [ "PHP", "Javascript", "MySQL", "VBA" ]
+			},
+			{
+				"label": "Web Developer (Internship)",
+				"years": "2017",
+				"company": "RATP",
+				"location": "Saint-Ouen, France",
+				"content": [
+					"Maintained a Web portal application in PHP & Javascript",
+					"Optimized SQL queries and fixed bugs",
+					"Developed functionalities for a work order management application"
+				],
+				"tags": [ "PHP", "Javascript", "MySQL" ]
+			},
+			{
+				"label": "Network System Administrator (Internship)",
+				"years": "2016",
+				"company": "RATP",
+				"location": "Saint-Ouen, France",
+				"content": [
+					"Developed a daemon for SFTP access management on Red Hat Enterprise Linux 5 servers",
+					"Increased skills on system administration and networks"
+				],
+				"tags": [ "Bash", "VirtualBox" ]
+			}
+		]
+	}
+}

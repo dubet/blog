@@ -1,15 +1,27 @@
 {
-	"extends": "astro/tsconfigs/strict",
+	"extends": "astro/tsconfigs/base",
 	"compilerOptions": {
+		"plugins": [
+			{ "name": "@astrojs/ts-plugin" },
+		],
+		"verbatimModuleSyntax": true,
 		"baseUrl": ".",
+		"moduleResolution": "node",
 		"paths": {
 			"@components/*": [ "src/components/*" ],
 			"@emojis/*": [ "src/components/emojis/*" ],
 			"@icons/*": [ "src/components/icons/*" ],
 			"@layouts/*": [ "src/layouts/*" ],
 			"@stylesheets/*": [ "src/stylesheets/*" ],
-			"@/*": [ "src/*" ],
-			"@public/*": [ "public/*" ]
+			"@*": [ "src/*" ],
+			"@styles/*": [ "src/styles/*" ],
+			"@locales/*": [ "src/locales/*" ]
 		}
-	}
+	},
+	"include": [
+		".astro/types.d.ts", "**/*"
+	],
+	"exclude": [
+		"dist"
+	]
 }

@@ -1,0 +1,25 @@
+---
+import ScrollButton from '@components/ScrollButton.astro';
+
+import { Locale, DEFAULT_LOCALE } from '@common';
+
+interface Props {
+	locale: Locale;
+};
+
+const { locale } = Astro.props;
+---
+
+<header class="h-lvh flex-col items-center justify-center gap-4 text-white flex bg-1st">
+	<div class="cubano flex items-center gap-4">
+		{Object.values(Locale).map((l: Locale) => (
+			l == locale
+				? <div class="hero-button text-xl cursor-not-allowed" style="background-color: var(--color-white);">{l}</div>
+				: l == DEFAULT_LOCALE
+					? <a href="/" class="hero-button text-xl">{l.toUpperCase()}</a>
+					: <a href={"/" + l + "/"} class="hero-button text-xl">{l.toUpperCase()}</a>
+		))}
+	</div>
+	<h1 class="cubano text-7xl font-thin fg-white">dubet.fr</h1>
+	<ScrollButton />
+</header>
