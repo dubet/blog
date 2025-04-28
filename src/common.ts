@@ -45,7 +45,7 @@ function initLocale(locale: Locale): any {
 }
 
 const COPYRIGHT_USER: string = "Cyril Dubet";
-const COPYRIGHT_DATE: string = "2023 - 2024";
+const COPYRIGHT_DATE: string = "2023 - 2025";
 const DEFAULT_LOCALE: Locale = Locale.French;
 
 export { initLocale, COPYRIGHT_DATE, COPYRIGHT_USER, DEFAULT_LOCALE, Locale, type EducationEntry, type EmploymentEntry };

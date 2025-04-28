@@ -1,8 +1,9 @@
+// @ts-check
+
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-	integrations: [tailwind()],
 	site: 'https://dubet.fr',
 	compressHTML: true,
 	build: {
@@ -10,6 +11,7 @@ export default defineConfig({
 	},
 	output: 'static',
 	vite: {
+		plugins: [tailwindcss()],
 		build: {
 			rollupOptions: {
 				output: {

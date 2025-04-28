@@ -14,16 +14,18 @@ jobs:
     - name: Set up Node
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
-    - name: Set up Yarn & Corepack
+        node-version: '22'
+        check-latest: true
+    - name: Set up pnpm & corepack
       run: |
         node --version
-        corepack enable
-        yarn set version stable
-        yarn install
+        corepack enable pnpm
+        corepack use pnpm@latest-10
+        pnpm install
     - name: Build sources
       run: |
-        yarn build
+        pnpm build
+        pnpm minify
     - uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         repoToken: ${{ secrets.GITHUB_TOKEN }}

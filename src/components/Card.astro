@@ -17,8 +17,8 @@ const { label, years, host, location, content, tags } = Astro.props;
 ---
 
 <div class="flex w-full flex-col gap-4 rounded-lg p-4 bg-2nd fg-black">
-	<h2 class="text-center text-[1.3rem] font-bold cubano">{label}</h2>
-	<div class="cubano flex flex-wrap justify-center gap-2">
+	<h2 class="text-center text-[1.3rem] font-bold font-cubano">{label}</h2>
+	<div class="font-cubano flex flex-wrap justify-center gap-2">
 		<span class="vignette-item">
 			<span class="h-6 w-6 flex-shrink-0">
 				<CalendarIcon />
@@ -41,7 +41,7 @@ const { label, years, host, location, content, tags } = Astro.props;
 	{
 		content ? <ul class="list-disc px-4">{content.map((entry: string) => <li>{entry}</li>)}</ul> : null
 	}
-	<div class="cubano flex flex-wrap justify-center gap-2">
+	<div class="font-cubano flex flex-wrap justify-center gap-2">
 		{
 			tags?.map((t: string) => (
 				<span class="experience-tag">

@@ -4,9 +4,9 @@
 		"plugins": [
 			{ "name": "@astrojs/ts-plugin" },
 		],
-		"verbatimModuleSyntax": true,
+		"verbatimModuleSyntax": false,
 		"baseUrl": ".",
-		"moduleResolution": "node",
+		"moduleResolution": "node16",
 		"paths": {
 			"@components/*": [ "src/components/*" ],
 			"@emojis/*": [ "src/components/emojis/*" ],

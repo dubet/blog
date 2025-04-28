@@ -48,7 +48,7 @@ const CV = {
 <Layout locale={locale} title={T("index.title")}>
 	<HeroHeader locale={locale} />
 	<main class="bg-4th">
-		<div class="mx-auto grid grid-cols-1 gap-4 px-4 py-8 md:container lg:grid-cols-2 bg-4th">
+		<div class="mx-auto grid grid-cols-1 gap-4 px-10 py-8 md:container lg:grid-cols-2 2xl:px-auto bg-4th">
 			<section class="flex flex-col items-start gap-4">
 				<div class="flex w-full items-center justify-center">
 					<img class="h-64 w-64 rounded-full border-8 md:h-80 md:w-80" alt="Photograph of Cyril Dubet" loading="lazy" src="/assets/images/me.webp" style="border-color: var(--color-1st)" />
@@ -65,7 +65,7 @@ const CV = {
 						</div>
 					</a>
 				</div>
-				<div class="cubano text-md flex w-full flex-wrap justify-center gap-2">
+				<div class="font-cubano text-md flex w-full flex-wrap justify-center gap-2">
 					<div class="info">
 						<span class="icon">
 							<UserIcon />
@@ -90,41 +90,41 @@ const CV = {
 						<p class="py-1 text-center">{s}</p>
 					))}
 				</div>
-				<h1 class="section-title">
+				<h2 class="section-title">
 					<span class="h-8 w-8 flex-shrink-0">
 						<LanguageIcon />
 					</span>
 					<span>{T("index.languageTitle")}</span>
-				</h1>
+				</h2>
 				{(CV.languages).map((l) => (
 					<ProgressBar label={l.label} level={l.level} />
 				))}
-				<h1 class="section-title">
+				<h2 class="section-title">
 					<span class="h-8 w-8 flex-shrink-0">
 						<CodeIcon />
 					</span>
 					<span>{T("index.programmingTitle")}</span>
-				</h1>
+				</h2>
 				{(CV.programming).map((p) => (
 					<ProgressBar label={p.label} level={p.level} />
 				))}
-				<h1 class="section-title">
+				<h2 class="section-title">
 					<span class="h-8 w-8 flex-shrink-0">
 						<GraduationCapIcon />
 					</span>
 					<span>{T("index.educationTitle")}</span>
-				</h1>
+				</h2>
 				{(CV.education).map((e) => (
 					<Card label={e.label} years={e.years} host={e.institution} location={e.location} />
 				))}
 			</section>
 			<section class="flex flex-col items-start gap-4">
-				<h1 class="section-title">
+				<h2 class="section-title">
 					<span class="h-8 w-8 flex-shrink-0">
 						<BriefcaseIcon />
 					</span>
 					<span>{T("index.employmentTitle")}</span>
-				</h1>
+				</h2>
 				{(CV.employment).map((e) => (
 					<Card label={e.label} years={e.years} host={e.company} location={e.location} content={e.content} tags={e.tags} />
 				))}
