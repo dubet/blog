@@ -5,17 +5,17 @@
 			{ "name": "@astrojs/ts-plugin" },
 		],
 		"verbatimModuleSyntax": false,
-		"baseUrl": ".",
 		"moduleResolution": "node16",
+		"module": "node16",
 		"paths": {
-			"@components/*": [ "src/components/*" ],
-			"@emojis/*": [ "src/components/emojis/*" ],
-			"@icons/*": [ "src/components/icons/*" ],
-			"@layouts/*": [ "src/layouts/*" ],
-			"@stylesheets/*": [ "src/stylesheets/*" ],
-			"@*": [ "src/*" ],
-			"@styles/*": [ "src/styles/*" ],
-			"@locales/*": [ "src/locales/*" ]
+			"@components/*": [ "./src/components/*" ],
+			"@emojis/*": [ "./src/components/emojis/*" ],
+			"@icons/*": [ "./src/components/icons/*" ],
+			"@layouts/*": [ "./src/layouts/*" ],
+			"@stylesheets/*": [ "./src/stylesheets/*" ],
+			"@common": [ "./src/common.ts" ],
+			"@styles/*": [ "./src/styles/*" ],
+			"@locales/*": [ "./src/locales/*" ]
 		}
 	},
 	"include": [

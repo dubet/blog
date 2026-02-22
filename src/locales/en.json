@@ -6,7 +6,7 @@
 	"404": "The requested page does not exist (...yet?)",
 	"index": {
 		"title": "Home",
-		"age": "28 y.o.",
+		"age": "29 y.o.",
 		"birthdate": "December 24th, 1996",
 		"description": [
 			"With more than 5 years of experience in software engineering projects, I have specialized over time in backend development with strong security and performance constraints using low-level languages. I enjoy writing efficient code and providing simple and elegant solutions to complex problems.",
@@ -23,7 +23,7 @@
 		"educationTitle": "Education",
 		"education": [
 			{
-				"label": "Engineer's Degree - Information Systems",
+				"label": "Engineer's Degree - Software Engineering",
 				"years": "2017 - 2020",
 				"institution": "CNAM",
 				"location": "Paris, France"

@@ -14,7 +14,7 @@ jobs:
     - name: Set up Node
       uses: actions/setup-node@v4
       with:
-        node-version: '22'
+        node-version: '25'
         check-latest: true
     - name: Set up pnpm & corepack
       run: |
