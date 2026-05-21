@@ -1,5 +1,5 @@
 allowBuilds:
-  esbuild: true
-  protobufjs: true
-  re2: true
-  sharp: true
+  esbuild: false
+  protobufjs: false
+  re2: false
+  sharp: false
