@@ -20,8 +20,8 @@
 
 @font-face {
 	font-family: 'Cubano';
-	src: url('/assets/fonts/Cubano.ttf') format('truetype');
-	font-display: block;
+	src: url('/assets/fonts/Cubano.woff2') format('woff2');
+	font-display: swap;
 }
 
 body {
@@ -45,12 +45,28 @@ body {
 	color: var(--color-2nd);
 }
 
+.fg-black {
+	color: var(--color-black);
+}
+
+.fg-white {
+	color: var(--color-white);
+}
+
+.bg-black {
+	background-color: var(--color-black);
+}
+
+.bg-white {
+	background-color: var(--color-white);
+}
+
 .vignette-item {
-	@apply flex items-center gap-2 rounded-lg p-2 bg-3rd;
+	@apply flex items-center justify-center gap-2 rounded-lg p-2 bg-3rd flex-grow;
 }
 
 .experience-tag {
-	@apply flex items-center gap-2 rounded-lg p-2 text-sm bg-3rd;
+	@apply flex text-center gap-2 rounded-lg p-2 text-sm bg-3rd;
 }
 
 .hero-button {

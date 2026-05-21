@@ -1,7 +1,7 @@
 {
 	"copyright.claim": "All rights reserved.",
 	"meta": {
-		"description": "A concise overview of my engineering course in professional software industry."
+		"description": "A concise overview of my engineering course in the software industry."
 	},
 	"404": "The requested page does not exist (...yet?)",
 	"index": {
@@ -16,8 +16,7 @@
 		"languageTitle": "Languages",
 		"language": {
 			"french": "French",
-			"english": "English",
-			"german": "German"
+			"english": "English"
 		},
 		"programmingTitle": "Programming",
 		"educationTitle": "Education",

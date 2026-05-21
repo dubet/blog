@@ -1,7 +1,7 @@
 {
 	"copyright.claim": "Tous droits réservés.",
 	"meta": {
-		"description": "Un résumé concis de mon parcours d'ingénieur dans l'industrie du logicielle."
+		"description": "Un résumé concis de mon parcours d'ingénieur dans l'industrie logicielle."
 	},
 	"404": "La page demandée n'existe pas (...encore ?)",
 	"index": {
@@ -16,8 +16,7 @@
 		"languageTitle": "Langues",
 		"language": {
 			"french": "Français",
-			"english": "Anglais",
-			"german": "Allemand"
+			"english": "Anglais"
 		},
 		"programmingTitle": "Développement",
 		"educationTitle": "Diplômes",
