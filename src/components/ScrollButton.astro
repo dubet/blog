@@ -1,18 +1,19 @@
 ---
-import ArrowDownIcon from '@icons/ArrowDown.astro';
+import ArrowDownIcon from "./icons/ArrowDown.astro";
 ---
 
-<div id="scroll-button" class="hero-button cursor-pointer" tabindex=0>
+<button id="scroll-button" class="hero-button cursor-pointer" aria-label="Scroll down button" title="Scroll down button">
 	<div class="h-10 w-10">
 		<ArrowDownIcon />
 	</div>
-</div>
+</button>
 
 <script>
 	const button = document.getElementById('scroll-button');
 	const target = document.getElementsByTagName('main');
 
 	button?.addEventListener('click', () => {
-		target[0]?.scrollIntoView({ behavior: 'smooth'});
+		target[0]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+		button.blur();
 	});
 </script>

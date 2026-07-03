@@ -1,56 +1,63 @@
 ---
-import Layout from '@layouts/Default.astro';
-
-import Card from '@components/Card.astro';
-import ProgressBar from '@components/ProgressBar.astro';
-import HeroHeader from './HeroHeader.astro';
-import Footer from '@components/Footer.astro';
-
-import GithubIcon from '@icons/Github.astro';
-import EnvelopeIcon from '@icons/Envelope.astro';
-import BriefcaseIcon from '@icons/Briefcase.astro';
-import UserIcon from '@icons/User.astro';
-import LocationDotIcon from '@icons/LocationDot.astro';
-import CakeCandlesIcon from '@icons/CakeCandles.astro';
-import GraduationCapIcon from '@icons/GraduationCap.astro';
-import CodeIcon from '@icons/Code.astro';
-import LanguageIcon from '@icons/Language.astro';
-
-import { Locale, type EducationEntry, type EmploymentEntry, initLocale } from '@common';
+import {
+	type EducationEntry,
+	type EmploymentEntry,
+	getAge,
+	getFormattedDate,
+	initLocale,
+	type Locale,
+} from "@common";
+import Header from "./HeroHeader.astro";
+import EnvelopeIcon from "./icons/Envelope.astro";
+import GithubIcon from "./icons/Github.astro";
+import UserIcon from "./icons/User.astro";
+import LocationDotIcon from "./icons/LocationDot.astro";
+import CakeCandlesIcon from "./icons/CakeCandles.astro";
+import LanguageIcon from "./icons/Language.astro";
+import ProgressBar from "./ProgressBar.astro";
+import CodeIcon from "./icons/Code.astro";
+import GraduationCapIcon from "@icons/GraduationCap.astro";
+import Card from "@components/Card.astro";
+import BriefcaseIcon from "@icons/Briefcase.astro";
+import Footer from "@components/Footer.astro";
+import Layout from "@/layouts/Default.astro";
 
 interface Props {
 	locale: Locale;
-};
+}
 
 const { locale } = Astro.props;
 
 const T = initLocale(locale);
 
 const CV = {
+	birthDate: new Date("1996-12-24"),
 	description: T("index.description", { returnObjects: true }) as string[],
 	languages: [
-		{ "label": T("index.language.french"), "level": 100 },
-		{ "label": T("index.language.english"), "level": 100 }
+		{ label: T("index.language.french"), level: 100 },
+		{ label: T("index.language.english"), level: 100 },
 	],
 	programming: [
-		{ "label": "C++", "level": 95 },
-		{ "label": "Python", "level": 90 },
-		{ "label": "C#", "level": 80 },
-		{ "label": "Go", "level": 80 },
-		{ "label": "Rust", "level": 60 },
+		{ label: "C++", level: 90 },
+		{ label: "Python", level: 90 },
+		{ label: "Bash", level: 90 },
+		{ label: "TypeScript", level: 70 },
+		{ label: "Rust", level: 60 },
 	],
 	education: T("index.education", { returnObjects: true }) as EducationEntry[],
-	employment: T("index.employment", { returnObjects: true }) as EmploymentEntry[],
+	employment: T("index.employment", {
+		returnObjects: true,
+	}) as EmploymentEntry[],
 };
 ---
 
 <Layout locale={locale} title={T("index.title")}>
-	<HeroHeader locale={locale} />
-	<main class="bg-4th">
+	<Header locale={locale} />
+	<main class="bg-4th font-merriweather">
 		<div class="mx-auto grid grid-cols-1 gap-4 px-10 py-8 md:container lg:grid-cols-2 2xl:px-auto bg-4th">
 			<section class="flex flex-col items-start gap-4">
 				<div class="flex w-full items-center justify-center">
-					<img class="h-64 w-64 rounded-full border-8 md:h-80 md:w-80" alt="Photograph of Cyril Dubet" loading="lazy" src="/assets/images/me.webp" style="border-color: var(--color-1st)" />
+					<img class="h-64 w-64 rounded-full border-8 md:h-80 md:w-80 border-1st" alt="Photograph of Cyril Dubet" loading="lazy" src="/assets/images/me.webp" />
 				</div>
 				<div class="flex w-full items-center justify-center gap-4">
 					<a aria-label="email-contact" href="mailto:cyril@dubet.fr" class="any-button">
@@ -64,7 +71,7 @@ const CV = {
 						</div>
 					</a>
 				</div>
-				<div class="font-cubano text-md flex w-full flex-wrap justify-center gap-2">
+				<div class=" text-md flex w-full flex-wrap justify-center gap-2">
 					<div class="info">
 						<span class="icon">
 							<UserIcon />
@@ -81,16 +88,16 @@ const CV = {
 						<span class="icon">
 							<CakeCandlesIcon />
 						</span>
-						<span>{T("index.birthdate") + " (" + T("index.age") + ")"}</span>
+						<span>{getFormattedDate(CV.birthDate, locale) + " (" + getAge(CV.birthDate) + " " + T("index.ageSuffix") + ")"}</span>
 					</div>
 				</div>
-				<div class="fg-black">
+				<div class="text-black">
 					{(CV.description).map((s: string) => (
 						<p class="py-1 text-center">{s}</p>
 					))}
 				</div>
 				<h2 class="section-title">
-					<span class="h-8 w-8 flex-shrink-0">
+					<span class="h-8 w-8 shrink-0 fg-white">
 						<LanguageIcon />
 					</span>
 					<span>{T("index.languageTitle")}</span>
@@ -99,7 +106,7 @@ const CV = {
 					<ProgressBar label={l.label} level={l.level} />
 				))}
 				<h2 class="section-title">
-					<span class="h-8 w-8 flex-shrink-0">
+					<span class="h-8 w-8 shrink-0">
 						<CodeIcon />
 					</span>
 					<span>{T("index.programmingTitle")}</span>
@@ -108,7 +115,7 @@ const CV = {
 					<ProgressBar label={p.label} level={p.level} />
 				))}
 				<h2 class="section-title">
-					<span class="h-8 w-8 flex-shrink-0">
+					<span class="h-8 w-8 shrink-0">
 						<GraduationCapIcon />
 					</span>
 					<span>{T("index.educationTitle")}</span>
@@ -119,7 +126,7 @@ const CV = {
 			</section>
 			<section class="flex flex-col items-start gap-4">
 				<h2 class="section-title">
-					<span class="h-8 w-8 flex-shrink-0">
+					<span class="h-8 w-8 shrink-0">
 						<BriefcaseIcon />
 					</span>
 					<span>{T("index.employmentTitle")}</span>

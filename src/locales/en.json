@@ -4,12 +4,18 @@
 		"description": "A concise overview of my engineering course in the software industry."
 	},
 	"404": "The requested page does not exist (...yet?)",
+	"articleIndex": {
+		"noArticleFound": "Not article found. Come back later."
+	},
+	"article": {
+		"backToList": "Back to list"
+	},
 	"index": {
 		"title": "Home",
-		"age": "29 y.o.",
+		"ageSuffix": "years old",
 		"birthdate": "December 24th, 1996",
 		"description": [
-			"With more than 5 years of experience in software engineering projects, I have specialized over time in backend development with strong security and performance constraints using low-level languages. I enjoy writing efficient code and providing simple and elegant solutions to complex problems.",
+			"With more than 6 years of experience in software engineering projects, I have specialized over time in backend development with strong security and performance constraints using low-level languages. I enjoy writing efficient code and providing simple and elegant solutions to complex problems.",
 			"Primarily interested in security and concurrent programming, I also have devops skills under my belt: continuous integration, continuous deployment and continuous improvement, with automation as my main focus, which are the most essential skills today.",
 			"I am evolving nowadays in diverse missions in Avisto for major clients with international reputation."
 		],
@@ -46,17 +52,25 @@
 					"Maintained components and integrations pipelines",
 					"Automated deployments and supported VnV teams in an international and multicultural context"
 				],
-				"tags": [ "Python", "Ansible", "Kubernetes", "Grafana", "C#", "Bash", "Helm" ]
+				"tags": [
+					"Python",
+					"Ansible",
+					"Kubernetes",
+					"Grafana",
+					"C#",
+					"Bash",
+					"Helm"
+				]
 			},
 			{
 				"label": "C++ Engineer",
-				"years": "2023",
-				"company":"Avisto",
+				"years": "2023 - 2024",
+				"company": "Avisto",
 				"location": "Cachan, France",
 				"content": [
 					"Redesigned a graphical desktop application for initializing, verifying and managing firewalls"
 				],
-				"tags": [ "C++", "Qt" ]
+				"tags": ["C++", "Qt"]
 			},
 			{
 				"label": "C++ DevOps Engineer",
@@ -67,7 +81,16 @@
 					"Maintained a transactional middleware framework and a cloud native routing application on Microsoft Azure PaaS",
 					"Participated in technical workshops for the redesign of a solution capable of transmitting sensitive data (such as credit cards) through a chain of untrusted services in order to meet the requirements of the PCI DSS standard"
 				],
-				"tags": [ "C++", "Python", "Kubernetes", "Artifactory", "Helm", "ArgoCD", "Prometheus", "Boost" ]
+				"tags": [
+					"C++",
+					"Python",
+					"Kubernetes",
+					"Artifactory",
+					"Helm",
+					"ArgoCD",
+					"Prometheus",
+					"Boost"
+				]
 			},
 			{
 				"label": "C++ Security Engineer",
@@ -78,7 +101,16 @@
 					"Maintained a set of components for the secure transmission of network performance metrics (latency, delay...) between GNU/Linux embedded servers located on mobile naval platforms",
 					"Developed pipelines to automate testing and improve quality (code coverage)"
 				],
-				"tags": [ "C++", "Ansible", "Jenkins", "OpenSSL", "Kafka", "SonarQube", "SNMP", "Docker" ]
+				"tags": [
+					"C++",
+					"Ansible",
+					"Jenkins",
+					"OpenSSL",
+					"Kafka",
+					"SonarQube",
+					"SNMP",
+					"Docker"
+				]
 			},
 			{
 				"label": "QA Tester (Apprenticeship)",
@@ -88,9 +120,9 @@
 				"content": [
 					"Tested and monitored a critical surveillance application at the heart of the nuclear safety business",
 					"Specified technical and functional requirements for the redesign of the solution in alignment with business needs (performance, reliability, robustness)",
-					"Developed of VBA Excel macros for the edition of critical documents with high added value"
+					"Developed VBA Excel macros for the edition of critical documents with high added value"
 				],
-				"tags": [ "PHP", "Javascript", "MySQL", "VBA" ]
+				"tags": ["PHP", "Javascript", "MySQL", "VBA"]
 			},
 			{
 				"label": "Web Developer (Internship)",
@@ -100,9 +132,9 @@
 				"content": [
 					"Maintained a Web portal application in PHP & Javascript",
 					"Optimized SQL queries and fixed bugs",
-					"Developed functionalities for a work order management application"
+					"Developed features for a work order management application"
 				],
-				"tags": [ "PHP", "Javascript", "MySQL" ]
+				"tags": ["PHP", "Javascript", "MySQL"]
 			},
 			{
 				"label": "Network System Administrator (Internship)",
@@ -113,7 +145,7 @@
 					"Developed a daemon for SFTP access management on Red Hat Enterprise Linux 5 servers",
 					"Increased skills on system administration and networks"
 				],
-				"tags": [ "Bash", "VirtualBox" ]
+				"tags": ["Bash", "VirtualBox", "SFTP"]
 			}
 		]
 	}

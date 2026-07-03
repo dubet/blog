@@ -2,26 +2,26 @@
 	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
 		"plugins": [
-			{ "name": "@astrojs/ts-plugin" },
+			{
+				"name": "@astrojs/ts-plugin"
+			}
 		],
 		"verbatimModuleSyntax": false,
 		"moduleResolution": "node16",
 		"module": "node16",
 		"paths": {
-			"@components/*": [ "./src/components/*" ],
-			"@emojis/*": [ "./src/components/emojis/*" ],
-			"@icons/*": [ "./src/components/icons/*" ],
-			"@layouts/*": [ "./src/layouts/*" ],
-			"@stylesheets/*": [ "./src/stylesheets/*" ],
-			"@common": [ "./src/common.ts" ],
-			"@styles/*": [ "./src/styles/*" ],
-			"@locales/*": [ "./src/locales/*" ]
-		}
+			"@components/*": ["./src/components/*"],
+			"@emojis/*": ["./src/components/emojis/*"],
+			"@icons/*": ["./src/components/icons/*"],
+			"@layouts/*": ["./src/layouts/*"],
+			"@stylesheets/*": ["./src/stylesheets/*"],
+			"@common": ["./src/common.ts"],
+			"@styles/*": ["./src/styles/*"],
+			"@locales/*": ["./src/locales/*"],
+			"@/*": ["./src/*"]
+		},
+		"jsxImportSource": "solid-js"
 	},
-	"include": [
-		".astro/types.d.ts", "**/*"
-	],
-	"exclude": [
-		"dist"
-	]
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["dist"]
 }

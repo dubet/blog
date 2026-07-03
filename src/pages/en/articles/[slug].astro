@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from "astro:content";
+import type { Locale } from "@common";
+
+import * as MD from "@/articles/MarkdownStyle.tsx";
+import Layout from "@/components/ArticlePage.astro";
+
+export async function getStaticPaths() {
+	const articles = await getCollection("articles");
+
+	return articles
+		.filter((article) => article.data.locale === "en" && !article.data.draft)
+		.map((article) => ({
+			params: { slug: article.data.slug },
+			props: { article },
+		}));
+}
+
+const { article } = Astro.props;
+
+if (!article) {
+	return Astro.redirect("/en/articles/404");
+}
+
+const { Content } = await render(article);
+---
+
+<Layout title={article.data.title} locale={article.data.locale as Locale}>
+	<Content components={{
+		h1: MD.Heading1,
+		h2: MD.Heading2,
+		p: MD.Paragraph,
+		code: MD.Code,
+		em: MD.Italic,
+		ul: MD.UnorderedList,
+		hr: MD.Separator,
+		strong: MD.Bold,
+		table: MD.Table,
+		thead: MD.TableHead,
+		tbody: MD.TableBody,
+		tr: MD.TableRow,
+		th: MD.TableHeader,
+		td: MD.TableData,
+		sup: MD.Footnote,
+		ol: MD.OrderedList,
+		li: MD.ListItem,
+	}} />
+</Layout>

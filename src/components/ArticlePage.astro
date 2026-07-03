@@ -1,0 +1,26 @@
+---
+import { initLocale, type Locale } from "@common";
+import Layout from "@layouts/Default.astro"
+import Header from "@components/ArticleHeader.astro";
+import Footer from "@components/Footer.astro";
+
+interface Props {
+	locale: Locale;
+	title: string;
+}
+
+const { locale, title } = Astro.props;
+
+const T = initLocale(locale);
+---
+
+<Layout locale={locale} title={title}>
+	<Header locale={locale} />
+	<main class="font-merriweather bg-3rd md:max-w-5xl xl:max-w-5xl mx-auto px-4 min-h-screen py-8">
+		<div class="w-fit text-black border-r-12 border-black mb-8 border-b-2 px-2 bg-2nd">
+			<a class="hover:text-blue-900" href={`/${locale}/articles`}>{T("article.backToList")}</a>
+		</div>
+		<slot />
+	</main>
+	<Footer locale={locale} />
+</Layout>

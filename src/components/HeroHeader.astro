@@ -1,25 +1,30 @@
 ---
-import ScrollButton from '@components/ScrollButton.astro';
-
-import { Locale, DEFAULT_LOCALE } from '@common';
+import type { Locale } from "@common";
+import ScrollButton from "./ScrollButton.astro";
+import FeatherPointedIcon from "./icons/FeatherPointed.astro";
 
 interface Props {
 	locale: Locale;
-};
+}
 
 const { locale } = Astro.props;
 ---
 
-<header class="font-cubano min-h-svh flex-col items-center justify-center gap-4 text-white flex bg-1st">
+<header class=" min-h-svh flex-col items-center justify-center gap-4 text-white flex bg-1st">
 	<div class="flex items-center gap-4">
-		{Object.values(Locale).map((l: Locale) => (
+		{["en", "fr"].map((l: string) => (
 			l == locale
 				? undefined
-				: l == DEFAULT_LOCALE
-					? <a href="/" class="hero-button text-xl">{l.toUpperCase()}</a>
-					: <a href={"/" + l + "/"} class="hero-button text-xl">{l.toUpperCase()}</a>
+				: <a href={"/" + l + "/"} class="hero-button text-xl">{l.toUpperCase()}</a>
 		))}
 	</div>
 	<h1 class="text-7xl font-thin fg-white">dubet.fr</h1>
+	<div class="flex items-center justify-center gap-4">
 	<ScrollButton />
+	<a aria-label="Got to articles button" title="Go to articles button" href={`/${locale}/articles`} class="hero-button cursor-pointer">
+		<div class="h-10 w-10">
+			<FeatherPointedIcon />
+		</div>
+	</a>
+	</div>
 </header>

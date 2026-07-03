@@ -1,0 +1,8 @@
+---
+import Page from "@components/ArticleIndexPage.astro";
+import type { Locale } from "@common";
+
+const LOCALE: Locale = "fr";
+---
+
+<Page title=`Articles (${LOCALE})` locale={LOCALE} />
