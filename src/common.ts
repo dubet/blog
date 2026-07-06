@@ -2,7 +2,7 @@ import enLocale from "@locales/en.json";
 import frLocale from "@locales/fr.json";
 import i18next from "i18next";
 
-export type Locale = "en" | "fr";
+export type Locale = "en" | "fr" | "ru";
 
 export interface EducationEntry {
 	label: string;
@@ -62,5 +62,7 @@ export const getFormattedDate = (date: Date, locale: Locale): string => {
 			return `${weekday}, ${month} ${day}${suffix ?? ""}, ${year}`;
 		case "fr":
 			return `${weekday[0]?.toUpperCase() + weekday.slice(1)} ${day}${suffix ?? ""} ${month} ${year}`;
+		case "ru":
+			return `${weekday[0]?.toUpperCase() + weekday.slice(1)}, ${day} ${month} ${year}`
 	}
 };

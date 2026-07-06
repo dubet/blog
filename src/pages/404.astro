@@ -1,27 +1,58 @@
 ---
 import "@styles/theme.css";
 
-import { initLocale, type Locale } from "@common";
+import { type Locale } from "@common";
 import Layout from "@layouts/Default.astro"
 import FaceWithMonocle from "@components/emojis/FaceWithMonocle.astro";
 import HouseIcon from "@components/icons/House.astro";
 
-const LOCALE: Locale = "fr";
+const LOCALE: Locale = ((): Locale => {
+	const pathname: string = Astro.url.pathname;
 
-const T = initLocale(LOCALE);
+	if (pathname.startsWith("/fr")) return "fr";
+	if (pathname.startsWith("/en")) return "en";
+	if (pathname.startsWith("/ru")) return "ru";
+
+	return "fr";
+})();
+
+const translations = {
+	en: {
+		title: "404 - Page Not Found",
+		heading: "Not Found",
+		message: "The page you're looking for doesn't exist.",
+	},
+	fr: {
+		title: "404 - Page Introuvable",
+		heading: "Introuvable",
+		message: "La page que vous recherchez n'existe pas.",
+	},
+	ru: {
+		title: "404 - Страница Не Найдена.",
+		heading: "Не Найдено.",
+		message: "Страница, которую вы ищете, не существует.",
+	}
+};
+
+const translation = translations[LOCALE];
 ---
 
-<Layout locale={LOCALE} title={T("index.title")}>
+<Layout locale={LOCALE} title={translation.title}>
 	<header>
-		<div class="hidden sm:flex h-screen w-screen justify-center items-center bg-1st px-2">
-			<div class="h-128 w-lg flex flex-wrap gap-8 m-8 content-center items-center justify-center">
-			<FaceWithMonocle />
-			<p class=" text-center fg-white text-lg w-full">{T("404")}</p>
-			<a aria-label="return-home" href="/" class="hero-button  w-64">
-				<span class="h-10 w-10">
-					<HouseIcon />
+		<div class="hidden sm:flex h-screen w-screen justify-center items-center bg-1st px-2 text-white">
+			<div class="h-128 w-lg flex flex-col gap-8 m-8 content-center items-center justify-center">
+				<span class="w-32">
+					<FaceWithMonocle />
 				</span>
-			</a>
+				<h1 class="text-4xl font-bold">
+					{translation.heading}
+				</h1>
+				<p class="text-center fg-white text-lg w-full">{translation.message}</p>
+				<a aria-label="return-home" href={`/${LOCALE}`} class="hero-button w-64">
+					<span class="h-10 w-10">
+						<HouseIcon />
+					</span>
+				</a>
 			</div>
 		</div>
 	</header>

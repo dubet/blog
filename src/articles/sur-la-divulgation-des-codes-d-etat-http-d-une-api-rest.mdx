@@ -1,9 +1,9 @@
 ---
 title: "Sur la divulgation des codes d'état HTTP d'une API REST"
-description: "Qu'arrive t-il lorsque l'on pense beaucoup trop à propos des codes d'état HTTP, et de l'aspect sécurité en les divulguant depuis une API REST ? Cet article traite de ces sujets."
-pubDate: '2026-07-03'
-locale: 'fr'
-slug: 'sur-la-divulgation-des-codes-d-etat-http-d-une-api-rest'
+description: "Les codes d'état HTTP constituent un moyen efficace de dépannage, mais ils peuvent également servir à d'autres fins, comme l'analyse des points de terminaison d'API : cela pourrait avoir des répercussions sur la sécurité. Ou peut-être pas ?"
+pubDate: "2026-07-03"
+locale: "fr"
+slug: "sur-la-divulgation-des-codes-d-etat-http-d-une-api-rest"
 draft: false
 ---
 
@@ -21,13 +21,17 @@ On cherche un moyen de protéger les données que l'on expose via les points de 
 
 - L'**autorisation** est un mécanisme qui intervient *après* l'authentification et qui vise à vérifier si l'entité dispose des périmètres, autorisations, privilèges, rôles, groupes ou attributs requis pour accéder à des ressources spécifiques.
 
-En principe, la plupart des points de terminaison d'API ne doivent pas être accessibles aux entités non authentifiées. La plupart des APIs publiques exigent que les utilisateurs (humains ou machines) soient enregistrés afin d'obtenir une clé; cette clé doit être utilisée lors de l'accès à l'API. Cet enregistrement permet aux APIs publiques de contrôler les accès, mais aussi de surveiller les différents usages et éventuellement révoquer l'accès aux utilisateurs malveillants.
+En principe, la plupart des points de terminaison d'API ne doivent pas être accessibles aux entités non authentifiées. La plupart des APIs publiques exigent que les utilisateurs (humains ou machines) soient enregistrés afin d'obtenir une clé ; cette clé doit nécessairement être utilisée afin d'accéder à l'API. Cet enregistrement permet aux APIs publiques de mieux contrôler et verrouiller les accès : surveiller les différents usages et éventuellement révoquer l'accès aux utilisateurs malveillants.
 
-Même dans le cas où l'entité a été enregistrée et possède une clé, il se peut que certains parties de l'API ne lui soient toujours pas accessible, car celle-ci ne dispose pas de l'autorisation nécessaire à cette fin.
+Néanmoins, même dans le cas où l'entité a été enregistrée et possède une clé, il se peut que certains parties de l'API ne lui soient toujours pas accessible : c'est parce que l'entité ne dispose pas de l'autorisation nécessaire à cette fin.
 
-Ces parties de l'API sont réservées à certaines entités spécifiques, plus *privilégiées*, qui possèdent les propriétés discriminantes requises : groupes, rôles, autorisations, privilèges, périmètres, attributs... qui sont, en somme, tout ce qui leur est rattaché sans être fondé sur leur identité elle-même.
+Ces parties de l'API sont réservées à certaines entités spécifiques plus *privilégiées*, ayant les propriétés nécessaires en fonction du type de contrôles d'accès:
 
-Prenons l'exemple du point de terminaison HTTP `GET /admin`, destiné aux utilisateurs disposant du rôle d'administrateur : les utilisateurs classiques ne pourront pas y accéder car ils n'appartiennent pas au groupe des administrateurs ; même s'ils sont authentifiés.
+- Groupes, Rôles, Autorisations, Privilèges, Périmètres, Attributs...
+
+Ces propriétés ne se fondent pas sur l'identité de l'entité ; elles représentent plutôt ce qui a été rattaché à l'entité dans le but de la distinguer des autres.
+
+Prenons l'exemple du point de terminaison HTTP `GET /admin`, destiné aux utilisateurs disposant du rôle d'administrateur : les utilisateurs classiques ne pourront pas y accéder car ils n'appartiennent pas au groupe des administrateurs ; même s'ils sont authentifiés, ils n'en ont pas l'autorisation.
 
 La norme HTTP définit les codes d'état `HTTP 401 UNAUTHORIZED`[^1] (en cas d'absence d'authentification) et `HTTP 403 FORBIDDEN`[^2] (en cas d'absence d'autorisation) pour indiquer que le point de terminaison demandé ne sera pas accessible tant que ces deux conditions ne seront pas remplies.
 
@@ -53,7 +57,7 @@ Et si nous choisissions de ne rien divulguer et d'utiliser un code d'état gén�
 
 Par exemple, les deux points de terminaison HTTP `GET /whatever/we/type` et `GET /admin/invoices` renverraient le code d'état générique `HTTP 404 NOT FOUND`, que l'utilisateur soit authentifié ou non, et qu'il soit autorisé ou non.
 
-En renvoyant ce code d'état générique, personne ne peut vraiment savoir si la ressource existe ou non ; en fait, tout le monde reçoit systématiquement ce code d'état tant que qu'il n'est pas authentifié. Même lorsque les utilisateurs seront authentifiés, les points de terminaisons protégés nécéssitant une autorisation ne renverront pas non plus de code `403`, mais le code générique `404`.
+En renvoyant ce code d'état générique, personne ne peut vraiment savoir si la ressource existe ou non ; en fait, tout le monde reçoit systématiquement ce code d'état tant que qu'il n'est pas authentifié. Même lorsque les utilisateurs seront authentifiés, les points de terminaisons protégés nécessitant une autorisation ne renverront pas non plus de code `403`, mais le code générique `404`.
 
 Dans les faits, cette solution ne renverrait plus que le code `HTTP 200 OK` si les contraintes d'authentification et d'autorisation sont satisfaites. Dans le cas contraire, un code d'était `HTTP 404 NOT FOUND` serait retourné à la place.
 
@@ -79,13 +83,13 @@ De plus, il est possible que les attaquants avertis ne surveillent pas simplemen
 
 Parmis les techniques sophistiquées, on peut citer celle qui inclut le sondage de grandes quantités de points de terminaisons *plausibles* pour mesurer leur temps de réponse sur une période.
 
-Ce type de scan, qui est une attaque via canal auxiliaire, est destiné à différencier les points de terminaison réels qui ont été définis dans le code de l'API parmi les points de terminason qui n'ont pas été définis (pour lesquels le temps de réponse sera rapide car le mécanisme de routage derrière sera optimisé pour retourner le plus tôt possible). Les points de terminaisons qui ont été définis prendront en moyenne un peu plus de temps à traiter par rapport aux autres, parce qu'ils supportent une logique supplémentaire autour de l'authentification et l'autorisation (par exemple, traiter les revendications de l'entité, le jeton d'authentification, etc...).
+Ce type de scan, qui est une attaque via canal auxiliaire, est destiné à différencier les points de terminaison réels qui ont été définis dans le code de l'API parmi les points de terminaison qui n'ont pas été définis (pour lesquels le temps de réponse sera rapide car le mécanisme de routage derrière sera optimisé pour retourner le plus tôt possible). Les points de terminaisons qui ont été définis prendront en moyenne un peu plus de temps à traiter par rapport aux autres, parce qu'ils supportent une logique supplémentaire autour de l'authentification et l'autorisation (par exemple, traiter les revendications de l'entité, le jeton d'authentification, etc...).
 
 Avec ce type de technique, il est facile de mettre en évidence les points de terminaison véritablement exploitables : ce sont ceux qui ont des temps de réponse en moyenne légèrement plus lents.
 
 Les techniques de sondage sont aussi très efficaces pour la simple et bonne raison que nous nous efforçons en général de concevoir des APIs avec des noms significatifs : personne ne veut se souvenir que le point de terminaison `GET /zxw/qwux` retourne les 10 derniers utilisateurs créés par le système.
 
-Les concepteurs d'APIs voudront plutôt définir des routes avec des noms génériques et qui ont du sens; celles-ci seront faciles à mémoriser par l'équipe de développement. Sans aucun doute, ces routes seront rapidement identifiées par les attaquants lors d'une attaque par force brute, probablement dans les premiers milliers de tentatives.
+Les concepteurs d'APIs voudront plutôt définir des routes avec des noms génériques et qui ont du sens ; celles-ci seront faciles à mémoriser par l'équipe de développement. Sans aucun doute, ces routes seront rapidement identifiées par les attaquants lors d'une attaque par force brute, probablement dans les premiers milliers de tentatives.
 
 Trouver tous les véritables points de terminaison prendra bien moins de temps qu'on pourrait penser, particulièrement pour les acteurs déterminés qui disposent bien souvent des meilleurs outils et sont mieux préparés.
 

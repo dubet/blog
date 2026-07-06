@@ -30,6 +30,10 @@ export default defineConfig({
 	site: "https://dubet.fr",
 	compressHTML: true,
 
+	redirects: {
+		"/": "/fr",
+	},
+
 	build: {
 		inlineStylesheets: "never",
 	},

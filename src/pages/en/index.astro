@@ -1,5 +1,8 @@
 ---
-import IndexPage from "@components/IndexPage.astro"
+import IndexPage from "@components/IndexPage.astro";
+import type { Locale } from "@common";
+
+const LOCALE: Locale = "en";
 ---
 
-<IndexPage locale="en" />
+<IndexPage locale={LOCALE} />
