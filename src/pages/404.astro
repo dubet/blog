@@ -3,7 +3,7 @@ import "@styles/theme.css";
 
 import { type Locale } from "@common";
 import Layout from "@layouts/Default.astro"
-import FaceWithMonocle from "@components/emojis/FaceWithMonocle.astro";
+import FaceWithMonocle from "@emojis/FaceWithMonocle.astro";
 import { BsHouseFill } from "solid-icons/bs";
 
 
@@ -42,7 +42,7 @@ const translation = translations[LOCALE];
 	<header>
 		<div class="hidden sm:flex h-screen w-screen justify-center items-center bg-1st px-2 text-white">
 			<div class="h-128 w-lg flex flex-col gap-8 m-8 content-center items-center justify-center">
-				<span class="w-32">
+				<span class="w-64 transition hover:scale-120">
 					<FaceWithMonocle />
 				</span>
 				<h1 class="text-4xl font-bold">

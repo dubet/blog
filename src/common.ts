@@ -6,7 +6,7 @@ import i18next from "i18next";
 export type Locale = "en" | "fr" | "ru";
 
 export const COPYRIGHT_USER: string = "Cyril Dubet";
-export const COPYRIGHT_DATE: string = "2023 - 2026";
+export const COPYRIGHT_DATE: string = "2023";
 export const DEFAULT_LOCALE: Locale = "fr";
 
 export interface EducationEntry {
@@ -70,3 +70,7 @@ export const getFormattedDate = (date: Date, locale: Locale): string => {
 			throw new Error("Invalid locale for formatted date");
 	}
 };
+
+export const getCurrentYear = (): string => {
+	return new Date(Date.now()).getFullYear().toString();
+}

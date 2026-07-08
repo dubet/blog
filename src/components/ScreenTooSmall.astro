@@ -1,7 +1,9 @@
 ---
-import FaceWithMonocle from "./emojis/FaceWithMonocle.astro";
+import FaceWithMonocle from "@emojis/FaceWithMonocle.astro";
 ---
 
 <header class="sm:hidden flex flex-wrap h-screen w-screen items-center justify-center content-center bg-1st px-2">
-	<FaceWithMonocle />
+	<div class="transition hover:scale-90 cursor-pointer w-screen">
+		<FaceWithMonocle />
+	</div>
 </header>

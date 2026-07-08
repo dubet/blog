@@ -13,27 +13,33 @@ import { PublicationDate } from '@/articles/MarkdownStyle.tsx';
 
 <PublicationDate date={frontmatter.pubDate} locale={frontmatter.locale} />
 
-When you're building a REST API, security should be top priority.
+При создании REST API безопасность должна быть главным приоритетом.
 
-You want to protect the data you're exposing through your endpoints. To pull this off, you set up two mechanisms: **authentication** and **authorization**. These let you control and limit who gets to access what.
+Вы хотите защитить данные, которые вы раскрываете через свои эндпоинты. Чтобы это осуществить, вы устанавливаете два механизма: **аутентификация** и **авторизация**. Они позволяют вам контролировать и ограничивать, кто получает доступ к чему.
 
-- **Authentication** is the mechanism that verifies whether a principal claiming to have a given identity is actually who they claim to be.
+- **Аутентификация** — это механизм, который проверяет, является ли субъект, претендующий на определенную личность, действительно тем, кем он себя выдает.
 
-- **Authorization** kicks in *after* authentication and checks whether the principal has the required scopes, permissions, privileges, roles, groups, or attributes needed to access specific resources.
+- **Авторизация** вступает в силу *после* аутентификации и проверяет, имеет ли субъект требуемые области действия, разрешения, привилегии, роли, группы или атрибуты, необходимые для доступа к конкретным ресурсам.
 
-As a rule, most API endpoints shouldn't be accessible to unauthenticated principals. Most public APIs require users (whether human or machine) to sign up and get an API key; you need to use that key when hitting the API. This registration lets public APIs control access, monitor usage patterns, and potentially revoke access from bad actors.
+Как правило, большинство эндпоинтов API не должны быть доступны неаутентифицированным субъектам. Большинство публичных API требуют, чтобы пользователи (люди или машины) зарегистрировались и получили ключ API; вам нужно использовать этот ключ при обращении к API. Эта регистрация позволяет публичным API контролировать доступ, отслеживать модели использования и потенциально отозвать доступ у злоумышленников.
 
-Even if a principal has registered and has a key, certain parts of the API might still be off-limits to them because they don't have the necessary authorization.
+Even if a principal has registered and has a key, certain parts of the API might still be out of their reach because they don't have the necessary authorization.
 
-Those parts are reserved for specific, more *privileged* principals who have the required discriminating properties: groups, roles, permissions, privileges, scopes, attributes... basically, anything attached to them beyond their raw identity.
+Those parts are reserved for specific, more *privileged* principals who have the required discriminating properties:
 
-Consider the HTTP endpoint `GET /admin`, which is meant for users with an admin role: regular users won't be able to access it because they're not in the admin group—even if they're authenticated.
+- Groups, roles, permissions, privileges, scopes, attributes...
+
+These properties can be anything attached to them beyond their raw identity and which can be used to distinguish one from another.
+
+Consider the HTTP endpoint `GET /admin`, which is meant for users with an admin role: regular users won't be able to access it because they're not in the admin group, even if they are authenticated.
 
 The HTTP spec defines the status codes `HTTP 401 UNAUTHORIZED` [^1] (when authentication is missing) and `HTTP 403 FORBIDDEN` [^2] (when authorization is missing) to signal that the requested endpoint won't be accessible until those conditions are met.
 
-These status codes are explicit and meaningful, but that's exactly why they leak interesting information: the fact that the requested endpoint is actually **defined** (otherwise, an `HTTP 404 NOT FOUND` would've been returned instead) and **actionnable**; in other words, the endpoint exists and is expected to return *something* once the access conditions are satisfied.
+These status codes are explicit and meaningful. That's why they also leak interesting information: the fact that the requested endpoint is actually **defined** (otherwise, an `HTTP 404 NOT FOUND` would've been returned instead) and **actionnable**; in other words, the endpoint exists and is expected to return *something* once the access conditions are satisfied.
 
-So here's the thing: these HTTP status codes are crucial for troubleshooting during development and in production. But they can also inadvertently reveal exploitable info about your API's behavior to third parties (like threat actors or malicious individuals) looking for vulnerabilities. These status codes inadvertently highlight valuable targets and areas of interest within the API.
+Normally, these HTTP status codes are really helpful for troubleshooting during development and in production. But they can also inadvertently reveal exploitable info about the API's behavior to third parties (like threat actors or malicious individuals) looking for vulnerabilities.
+
+These status codes highlight *valuable targets* and disclose *areas of interest* within the API.
 
 If an endpoint returns `HTTP 401 UNAUTHORIZED` instead of the generic `HTTP 404 NOT FOUND`, you can reasonably assume that endpoint is defined; it returns a response and might even potentially leak sensitive information that wouldn't be visible without prior authentication.
 
@@ -47,7 +53,7 @@ For the two approaches we'll cover next, we'll take into account three things:
 - Whether the endpoint is defined
 - Whether the principal is authorized
 
-## Solution #1: The Generic 404
+## Solution #1: The generic 404
 
 What if we decided to leak nothing and just return a generic status code, no matter who's trying to hit one of our endpoints?
 
@@ -57,7 +63,7 @@ By returning this generic status code, nobody can really tell if the resource ex
 
 In practice, this approach would only ever return `HTTP 200 OK` if authentication and authorization constraints are satisfied; otherwise `HTTP 404 NOT FOUND` will always be returned.
 
-This approach means deliberately ignoring the HTTP standard, which could trash the developer experience during development and testing. Status codes are incredibly valuable for diagnosing and troubleshooting problems.
+This approach means deliberately ignoring the HTTP standard, which could trash the developer experience during development and testing. Status codes are incredibly valuable for *diagnosing* and *troubleshooting* problems.
 
 Worse is that, even in production when you are monitoring, you won't be able to figure out whether the logs are meaningful. All responses to denied requests get logged as `HTTP 404 NOT FOUND`, so monitoring unauthorized access becomes a fool's errand.
 
@@ -69,29 +75,31 @@ Not using the right status codes masks the real reason why an endpoint returned 
 
 At this point, with such a generic status code, all bets are off.
 
-More broadly, this is basically just sweeping dust under the rug. What we end up with is actually the worst kind of security: *security through obscurity*. It gives you a false sense of safety, a comfortable illusion of protection when it's really just a pathetic attempt to defend against attackers.
+More broadly, this is basically just sweeping dust under the rug. What we end up with is actually the **worst** kind of security: *security through obscurity*. It gives you a **false** sense of safety, a comfortable illusion of protection when it's really just a pathetic attempt to defend against attackers.
 
-So in the end, this approach doesn't deliver real benefits for development, operations, or security. Monitoring becomes harder, troubleshooting is worse, it makes auditing tricky... and the developer experience is a pain as well.
+So in the end, this approach doesn't deliver real benefits for development, operations nor security. Monitoring becomes harder, troubleshooting is worse, it makes auditing tricky... and the developer experience is a pain as well.
 
 The HTTP standard defines precise, meaningful status codes. We should use them correctly and follow the best practices that have evolved over time.
 
 Additionally, more knowledgeable attackers may not observe only status codes: they can measure other things too.
 
-Among sophisticated techniques, there's one that involves probing a large range of plausible endpoints and measuring their response times over a period.
+Among sophisticated techniques, there's one that involves probing a large range of *plausible* endpoints and measuring their response times over a period.
 
-This kind of scan is a side-channel attack. Here we try to measure something which is not explicitely given by the API. It tries to distinguish real endpoints that are actually defined in the API code from those that do not exist, by measuring their individual response time. Undefined endpoints will respond fast because the routing mechanism behind is optimized to bail out quickly, whereas endpoints that are actually defined take a bit longer to process on average because they handle extra logic around authentication and authorization (things like processing the principal's claims, validating tokens, etc...).
+This kind of scan is a *side-channel* attack. Here we try to measure something which is not explicitely given by the API. It tries to distinguish real endpoints that are actually defined in the API code from those that do not exist, by measuring their individual response time.
+
+Undefined endpoints will respond fast because the routing mechanism behind is optimized to bail out quickly, whereas defined endpoints will take a bit longer to process on average because they need to handle extra logic; of course the business logic (things like retrieving data from the database, etc...), but also authentication and authorization logic (things like processing the principal's claims, validating tokens, etc...).
 
 With this technique, it's pretty easy to pick out genuinely exploitable endpoints: they're the ones with slightly slower average response times.
 
-Probing techniques are very effective, partly because we generally try to design APIs with meaningful endpoint names.
+Probing techniques are very effective, because we generally try to design APIs with meaningful endpoint names.
 
-Nobody wants to remember that `GET /zxw/qwux` endpoint returns the last 10 users created by the system. We would so much prefer to have a `GET /users/last-10-created`. API designers want semantically meaningful, memorable routes that the development team can remember. Naturally, these routes get identified very fast by attackers during brute-force attacks: they will probably guess the whole API layout within the first few thousand attempts.
+Nobody wants to remember that `GET /zxw/qwux` endpoint returns the last 10 users created by the system. We would so much prefer to have a `GET /users/last-10-created`. API designers want semantically meaningful, memorable routes that the development team can remember. Naturally, these routes get identified very fast by attackers during brute-force attacks: they will probably guess the whole API layout within the first thousand attempts.
 
 Finding all the real endpoints takes way less time than you would think, especially for determined actors who usually have the best tools and are well-prepared.
 
-A few defenses exist against this kind of attack, but we won't get into them here: these aren, among others, *rate limiting* (or *throttling*), *constant-time operations*, and *jitter* (or *noise injection*).
+A few defenses exist against this kind of attack, but we won't get into them here: these are, among others, *rate limiting* (or *throttling*), *constant-time operations*, and *jitter* (or *noise injection*).
 
-## Solution #2: 401 By Default
+## Solution #2: 401 by default
 
 The first question to ask is: can we authenticate and authorize principals *before* checking whether the endpoint is even defined?
 
@@ -105,7 +113,7 @@ Fundamentally, this means always returning `HTTP 401 UNAUTHORIZED` for unauthent
 
 **NOTE**: "Technical" endpoints (like `GET /health`) that query the system's health metrics obviously should be protected by authentication and authorization too, because they leak internal info that attackers could turn against the system.
 
-Health check data can actually be considered just as sensitive as customer data, for what it's worth.
+Health check data can actually be considered just as **sensitive** as customer data, for what it's worth.
 
 ---
 
@@ -120,12 +128,12 @@ Ultimately, here's a table showing what status code gets returned based on the c
 
 | Situation | Endpoint | Status Code |
 |-----------|----------|-------------|
-| Principal not authenticated | ❌ Not defined | ❌ 401 UNAUTHORIZED |
-| Principal not authenticated | ✅ Defined | ❌ 401 UNAUTHORIZED |
-| Principal authenticated | ❌ Not defined | 🔒 403 FORBIDDEN |
-| Principal not authorized | ✅ Defined | 🔒 403 FORBIDDEN |
-| Principal authorized | ❌ Not defined | ❓ 404 NOT FOUND |
-| Principal authorized | ✅ Defined | ✅ 200 OK |
+| Not Authenticated | Undefined | `401 UNAUTHORIZED` |
+| Not Authenticated | Defined | `401 UNAUTHORIZED` |
+| Authenticated | Undefined | `403 FORBIDDEN` |
+| Not Authorized | Defined | `403 FORBIDDEN` |
+| Authorized | Undefined | `404 NOT FOUND` |
+| Authorized | Defined | `200 OK` |
 
 This tradeoff feels reasonable: we can legitimately hide the truth about endpoint definitions from all unauthenticated principals and from all unauthorized principals without sufficient privileges. Only the most privileged principals get to know whether an endpoint has been defined or not: by getting back `HTTP 404 NOT FOUND` when it has not been defined.
 

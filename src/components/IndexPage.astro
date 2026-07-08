@@ -29,6 +29,7 @@ const CV = {
 	languages: [
 		{ label: T("index.language.french"), level: 100 },
 		{ label: T("index.language.english"), level: 100 },
+		{ label: T("index.language.russian"), level: 30 },
 	],
 	programming: [
 		{ label: "C++", level: 90 },
@@ -50,13 +51,13 @@ const CV = {
 		<div class="mx-auto grid grid-cols-1 gap-4 px-10 py-8 md:container lg:grid-cols-2 2xl:px-auto bg-4th">
 			<section class="flex flex-col items-start gap-4">
 				<div class="flex w-full items-center justify-center">
-					<img class="w-60 rounded-full border-8 md:w-102 border-1st" alt="Photograph of Cyril Dubet" loading="lazy" src="/assets/images/me.webp" />
+					<img class="h-60 w-60 rounded-full border-8 md:w-102 md:h-102 border-1st" alt="Photograph of Cyril Dubet" loading="lazy" src="/assets/images/me.webp" />
 				</div>
 				<div class="flex w-full items-center justify-center gap-4">
-					<a aria-label="email-contact" href="mailto:cyril@dubet.fr" class="any-button">
+					<a aria-label="email-contact" href="mailto:cyril@dubet.fr" class="hero-button">
 						<BsEnvelopeAtFill size={32} />
 					</a>
-					<a aria-label="github-profile" target="_blank" href="https://github.com/dubet" class="any-button">
+					<a aria-label="github-profile" target="_blank" href="https://github.com/dubet" class="hero-button">
 						<BsGithub size={32} />
 					</a>
 				</div>

@@ -39,7 +39,8 @@ export const Paragraph = (props: ParentProps) => {
 
 export const Footnote = (props: ParentProps) => {
 	return (
-		<sup class="text-black text-md px-1 inline-flex">[{props.children}]</sup>
+		<sup class="text-black text-md inline-flex">
+			<span class="grow flex-1 p-1 text-md font-bold">[{props.children}]</span></sup>
 	);
 };
 

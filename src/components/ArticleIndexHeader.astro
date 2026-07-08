@@ -16,7 +16,7 @@ const { locale } = Astro.props;
 			<span class="font-bold text-white">articles ({`${locale.toUpperCase()}`})</span>
 		</div>
 		<div class="flex items-center gap-4">
-			{["en", "fr", "ru"].map((l: string) => (
+			{["en", "fr"].map((l: string) => (
 				l != locale && (
 					<div class="bg-2nd rounded-lg">
 						<a class="text-xs md:text-lg flex w-fit p-2 items-center justify-center rounded-lg text-black font-bold hover:bg-3rd" href={`/${l}/articles`}>{l.toUpperCase()}</a>

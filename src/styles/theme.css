@@ -17,6 +17,33 @@
 	--breakpoint-2xl: 1536px;
 }
 
+/* merriweather-regular - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/merriweather-v33-cyrillic_latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* merriweather-italic - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Merriweather';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/assets/fonts/merriweather-v33-cyrillic_latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* merriweather-700 - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/merriweather-v33-cyrillic_latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 body {
 	background-color: var(--color-1st);
 }
@@ -58,20 +85,14 @@ body {
 }
 
 .hero-button {
-	@apply flex h-16 w-16 text-2xl items-center justify-center rounded-lg bg-2nd text-black font-bold;
+	@apply transition flex h-16 w-16 text-2xl items-center justify-center rounded-lg bg-2nd text-black font-bold;
 
 	&:focus,
 	&:hover {
-		@apply bg-3rd;
+		@apply bg-3rd scale-140;
 	}
-}
-
-.any-button {
-	@apply flex h-16 w-16 items-center justify-center rounded-lg bg-1st text-white;
-
-	&:focus,
-	&:hover {
-		@apply text-2nd;
+	&:disabled {
+		@apply bg-gray-600 text-white cursor-not-allowed;
 	}
 }
 
@@ -88,13 +109,17 @@ body {
 }
 
 .footnotes > ul > li {
-	@apply text-sm mb-2;
+	@apply text-sm mb-2 px-0;
 }
 
 .footnotes > ul > li > p {
-	@apply text-sm mb-2;
+	@apply text-sm mb-2 px-0;
 }
 
 [data-twemoji] {
 	@apply size-5 inline-block align-text-top;
+}
+
+[data-footnote-ref] {
+	@apply grow flex-1 px-1;
 }

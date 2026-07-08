@@ -4,53 +4,52 @@
 		"description": "Краткий обзор моего опыта работы инженером в сфере разработки программного обеспечения."
 	},
 	"articleIndex": {
-		"noArticleFound": "Not article found. Come back later."
+		"noArticleFound": "Статья не найдена. Попробуйте позже."
 	},
 	"article": {
-		"backToList": "Вернуться к списку."
+		"backToList": "Вернуться к списку"
 	},
 	"index": {
-		"title": "Home",
-		"ageSuffix": "years old",
-		"birthdate": "December 24th, 1996",
+		"title": "Главная страница",
+		"ageSuffix": "лет",
 		"description": [
-			"With more than 6 years of experience in software engineering projects, I have specialized over time in backend development with strong security and performance constraints using low-level languages. I enjoy writing efficient code and providing simple and elegant solutions to complex problems.",
-			"Primarily interested in security and concurrent programming, I also have devops skills under my belt: continuous integration, continuous deployment and continuous improvement, with automation as my main focus, which are the most essential skills today.",
-			"I am evolving nowadays in diverse missions in Avisto for major clients with international reputation."
+			"Имея более 6 лет опыта работы в проектах по разработке программного обеспечения, со временем я специализировался на разработке бэкенда с жесткими требованиями к безопасности и производительности с использованием низкоуровневых языков. Мне нравится писать эффективный код и предлагать простые и элегантные решения сложных задач.",
+			"В первую очередь меня интересуют вопросы безопасности и параллельного программирования, но у меня также есть навыки в области DevOps: непрерывная интеграция, непрерывное развертывание и непрерывное совершенствование, причем основное внимание я уделяю автоматизации — это самые востребованные навыки на сегодняшний день",
+			"В настоящее время я участвую в различных проектах в компании Avisto для крупных клиентов с международной репутацией."
 		],
-		"languageTitle": "Languages",
+		"languageTitle": "Языки",
 		"language": {
-			"french": "French",
-			"english": "English",
-			"russian": "Russian"
+			"french": "Французский",
+			"english": "Английский",
+			"russian": "Русский"
 		},
-		"programmingTitle": "Programming",
-		"educationTitle": "Education",
+		"programmingTitle": "Программирование",
+		"educationTitle": "Образование",
 		"education": [
 			{
-				"label": "Engineer's Degree - Software Engineering",
+				"label": "Степень инженера — программная инженерия",
 				"years": "2017 - 2020",
 				"institution": "CNAM",
-				"location": "Paris, France"
+				"location": "Париж, Франция"
 			},
 			{
-				"label": "Higher Technician Diploma - IT Services for Organizations",
+				"label": "Диплом Старшего техника — ИТ-услуги для организаций",
 				"years": "2015 - 2017",
 				"institution": "Lycée Louis Armand",
-				"location": "Paris, France"
+				"location": "Париж, Франция"
 			}
 		],
-		"employmentTitle": "Work Experiences",
+		"employmentTitle": "Опыт Работы",
 		"employment": [
 			{
-				"label": "DevOps Engineer",
-				"years": "Since 2024",
+				"label": "Инженер DevOps",
+				"years": "С 2024 года",
 				"company": "Avisto",
 				"location": "Cachan, France",
 				"content": [
-					"Deployed and integrated KPI solutions for multiple distributed on-premise clusters",
-					"Maintained components and integrations pipelines",
-					"Automated deployments and supported VnV teams in an international and multicultural context"
+					"Внедрение и интеграция решений по ключевым показателям эффективности (KPI) для нескольких распределенных локальных кластеров",
+					"Обеспечение работоспособности компонентов и конвейеров интеграции",
+					"Автоматизация развертываний и оказание поддержки группам по проверке и валидации в международной и мультикультурной среде"
 				],
 				"tags": [
 					"Python",
@@ -63,23 +62,23 @@
 				]
 			},
 			{
-				"label": "C++ Engineer",
+				"label": "Инженер C++",
 				"years": "2023 - 2024",
 				"company": "Avisto",
 				"location": "Cachan, France",
 				"content": [
-					"Redesigned a graphical desktop application for initializing, verifying and managing firewalls"
+					"Переработал графическое настольное приложение для настройки, проверки и управления брандмауэрами (межсетевые экраны)"
 				],
 				"tags": ["C++", "Qt"]
 			},
 			{
-				"label": "C++ DevOps Engineer",
+				"label": "Инженер C++ / DevOps",
 				"years": "2022 - 2023",
 				"company": "Avisto",
 				"location": "Cachan, France",
 				"content": [
-					"Maintained a transactional middleware framework and a cloud native routing application on Microsoft Azure PaaS",
-					"Participated in technical workshops for the redesign of a solution capable of transmitting sensitive data (such as credit cards) through a chain of untrusted services in order to meet the requirements of the PCI DSS standard"
+					"Обеспечивал поддержку платформы транзакционного промежуточного программного обеспечения и облачного приложения маршрутизации на платформе Microsoft Azure PaaS",
+					"Участвовал в технических семинарах по перепроектированию решения, позволяющего передавать конфиденциальные данные (например, данные кредитных карт) через цепочку ненадежных сервисов в целях соблюдения требований стандарта PCI DSS"
 				],
 				"tags": [
 					"C++",
@@ -93,13 +92,13 @@
 				]
 			},
 			{
-				"label": "C++ Security Engineer",
+				"label": "Инженер По Безопасности C++",
 				"years": "2020 - 2022",
 				"company": "Silicom",
 				"location": "Guyancourt, France",
 				"content": [
-					"Maintained a set of components for the secure transmission of network performance metrics (latency, delay...) between GNU/Linux embedded servers located on mobile naval platforms",
-					"Developed pipelines to automate testing and improve quality (code coverage)"
+					"Обеспечивал поддержку набора компонентов для безопасной передачи показателей производительности сети (задержка, время прохождения...) между встроенными серверами GNU/Linux, расположенными на мобильных военно-морских платформах",
+					"Разработал конвейеры для автоматизации тестирования и повышения качества (покрытие кода)"
 				],
 				"tags": [
 					"C++",
@@ -113,37 +112,37 @@
 				]
 			},
 			{
-				"label": "QA Tester (Apprenticeship)",
+				"label": "Тестировщик Качества (Стажировка)",
 				"years": "2017 - 2020",
 				"company": "EDF",
 				"location": "Saint-Denis, France",
 				"content": [
-					"Tested and monitored a critical surveillance application at the heart of the nuclear safety business",
-					"Specified technical and functional requirements for the redesign of the solution in alignment with business needs (performance, reliability, robustness)",
-					"Developed VBA Excel macros for the edition of critical documents with high added value"
+					"Проводил тестирование и мониторинг критически важного приложения для мониторинга, являющегося основой деятельности в сфере ядерной безопасности",
+					"Определял технические и функциональные требования к переработке решения с учетом бизнес-потребностей (производительность, надежность, устойчивость)",
+					"Разрабатывал макросы VBA в Excel для редактирования важных документов с высокой добавленной стоимостью"
 				],
 				"tags": ["PHP", "Javascript", "MySQL", "VBA"]
 			},
 			{
-				"label": "Web Developer (Internship)",
+				"label": "Веб-Разработчик (Стажировка)",
 				"years": "2017",
 				"company": "RATP",
 				"location": "Saint-Ouen, France",
 				"content": [
-					"Maintained a Web portal application in PHP & Javascript",
-					"Optimized SQL queries and fixed bugs",
-					"Developed features for a work order management application"
+					"Обеспечивал поддержку веб-портала, написанного на PHP и JavaScript",
+					"Оптимизировал SQL-запросы и устранял ошибки",
+					"Разрабатывал новые функции для приложения по управлению рабочими заказами"
 				],
 				"tags": ["PHP", "Javascript", "MySQL"]
 			},
 			{
-				"label": "Network System Administrator (Internship)",
+				"label": "Администратор Сетевых Систем (Стажировка)",
 				"years": "2016",
 				"company": "RATP",
 				"location": "Saint-Ouen, France",
 				"content": [
-					"Developed a daemon for SFTP access management on Red Hat Enterprise Linux 5 servers",
-					"Increased skills on system administration and networks"
+					"Разработал демон для управления доступом по протоколу SFTP на серверах Red Hat Enterprise Linux 5",
+					"Усовершенствовал навыки в области системного администрирования и сетей"
 				],
 				"tags": ["Bash", "VirtualBox", "SFTP"]
 			}

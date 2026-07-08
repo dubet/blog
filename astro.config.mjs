@@ -3,8 +3,6 @@ import mdx from "@astrojs/mdx";
 import solidJs from "@astrojs/solid-js";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import rehypeGithubEmoji from "rehype-github-emoji";
-import { rehypeTwemoji } from "rehype-twemoji";
 import { visit } from "unist-util-visit";
 
 export const rehypeFootnotesPlugin = () => {
@@ -41,6 +39,9 @@ export default defineConfig({
 	output: "static",
 
 	vite: {
+		resolve: {
+			noExternal: 'solid-icons'
+		},
 		plugins: [tailwindcss()],
 		build: {
 			rollupOptions: {
@@ -57,15 +58,7 @@ export default defineConfig({
 			shikiConfig: { theme: "dracula" },
 			processor: unified({
 				rehypePlugins: [
-					rehypeFootnotesPlugin,
-					rehypeGithubEmoji,
-					[
-						rehypeTwemoji,
-						{
-							format: "svg",
-							source: "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest",
-						},
-					],
+					rehypeFootnotesPlugin
 				],
 			}),
 		}),

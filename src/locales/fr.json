@@ -13,7 +13,6 @@
 	"index": {
 		"title": "Accueil",
 		"ageSuffix": "ans",
-		"birthdate": "24 Décembre 1996",
 		"description": [
 			"Avec plus de 6 ans d'expérience dans des projets d'ingénierie logicielle, je me suis spécialisé au fil du temps dans le développement backend avec des langages de bas niveau sur des problématiques de sécurité ou de volumétrie transactionnelle. J'aime écrire du code efficace et fournir des solutions simples et élégantes à des problèmes complexes.",
 			"Principalement intéressé par la sécurité et la programmation concurrente, je possède aussi des compétences opérationnelles issues des méthodologies DevOps, telles que l'intégration continue, le déploiement continu et l'amélioration continue, avec l'automatisation comme fer de lance, aujourd'hui incontournable dans le métier.",
@@ -22,7 +21,8 @@
 		"languageTitle": "Langues",
 		"language": {
 			"french": "Français",
-			"english": "Anglais"
+			"english": "Anglais",
+			"russian": "Russe"
 		},
 		"programmingTitle": "Développement",
 		"educationTitle": "Diplômes",

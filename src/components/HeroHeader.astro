@@ -11,18 +11,22 @@ const { locale } = Astro.props;
 ---
 
 <header class=" min-h-svh flex-col items-center justify-center gap-4 text-white flex bg-1st">
-	<div class="flex items-center gap-4">
-		{["en", "fr"].map((l: string) => (
-			l == locale
-				? undefined
-				: <a href={"/" + l + "/"} class="hero-button text-xl">{l.toUpperCase()}</a>
-		))}
+	<div class="absolute right-4 top-4">
+		<div class="flex items-center gap-4">
+			{["en", "fr"].map((l: string) => (
+				l == locale
+					? <button class="hero-button text-xl" disabled={true}>{l.toUpperCase()}</button>
+					: <a href={"/" + l + "/"} class="hero-button text-xl">{l.toUpperCase()}</a>
+			))}
+		</div>
 	</div>
 	<h1 class="text-7xl font-thin fg-white">dubet.fr</h1>
-	<div class="flex items-center justify-center gap-4">
-	<ScrollButton />
-	<a aria-label="Got to articles button" title="Go to articles button" href={`/${locale}/articles`} class="hero-button cursor-pointer">
-		<BsVectorPen size={32} />
-	</a>
+	<div class="absolute bottom-24">
+		<div class="flex items-center justify-center gap-4">
+			<ScrollButton />
+			<a aria-label="Go to articles button" title="Go to articles button" href={`/${locale}/articles`} class="hero-button cursor-pointer">
+				<BsVectorPen size={32} />
+			</a>
+		</div>
 	</div>
 </header>

@@ -43,7 +43,7 @@ const { label, years, host, location, content, tags } = Astro.props;
 	<div class=" flex flex-wrap justify-center gap-2">
 		{
 			tags?.map((t: string) => (
-				<span class="experience-tag">
+				<span class="experience-tag transition hover:scale-140 cursor-pointer hover:shadow-lg">
 					{t}
 				</span>
 			))

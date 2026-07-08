@@ -1,24 +1,14 @@
 ---
-import { COPYRIGHT_DATE, COPYRIGHT_USER, initLocale, type Locale } from "@common";
+import { COPYRIGHT_DATE, COPYRIGHT_USER, getCurrentYear, } from "@common";
 import { BsCCircle } from "solid-icons/bs";
-
-interface Props {
-	locale: Locale;
-}
-
-const { locale } = Astro.props;
-
-const T = initLocale(locale);
 ---
 
 <footer class="bg-1st">
 	<div class=" text-center p-6 fg-white md:text-lg sm:text-sm">
 		<div class="font-bold flex flex-wrap gap-2 text-center content-center items-center justify-center text-white">
-			<span>Copyright</span>
+			<span>{COPYRIGHT_DATE} - {getCurrentYear()}</span>
 			<BsCCircle />
-			<span>{COPYRIGHT_DATE}</span>
-			<span>{COPYRIGHT_USER}.</span>
-			<span>{T("copyright.claim")}</span>
+			<span>{COPYRIGHT_USER}</span>
 		</div>
 	</div>
 </footer>
