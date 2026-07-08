@@ -21,6 +21,7 @@
 		"i18next": "^26.3.4",
 		"rehype-github-emoji": "^1.0.0",
 		"rehype-twemoji": "^0.0.6",
+		"solid-icons": "^1.2.0",
 		"solid-js": "^1.9.14",
 		"tailwindcss": "^4.3.2",
 		"typescript": "^6.0.3",

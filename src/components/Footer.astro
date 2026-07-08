@@ -1,6 +1,6 @@
 ---
 import { COPYRIGHT_DATE, COPYRIGHT_USER, initLocale, type Locale } from "@common";
-import CopyrightIcon from "./icons/Copyright.astro";
+import { BsCCircle } from "solid-icons/bs";
 
 interface Props {
 	locale: Locale;
@@ -15,7 +15,7 @@ const T = initLocale(locale);
 	<div class=" text-center p-6 fg-white md:text-lg sm:text-sm">
 		<div class="font-bold flex flex-wrap gap-2 text-center content-center items-center justify-center text-white">
 			<span>Copyright</span>
-			<span class="md:w-4 md:h-4 sm:w-3 sm:h-3"><CopyrightIcon /></span>
+			<BsCCircle />
 			<span>{COPYRIGHT_DATE}</span>
 			<span>{COPYRIGHT_USER}.</span>
 			<span>{T("copyright.claim")}</span>

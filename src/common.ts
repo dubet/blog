@@ -1,8 +1,13 @@
 import enLocale from "@locales/en.json";
 import frLocale from "@locales/fr.json";
+import ruLocale from "@locales/ru.json";
 import i18next from "i18next";
 
 export type Locale = "en" | "fr" | "ru";
+
+export const COPYRIGHT_USER: string = "Cyril Dubet";
+export const COPYRIGHT_DATE: string = "2023 - 2026";
+export const DEFAULT_LOCALE: Locale = "fr";
 
 export interface EducationEntry {
 	label: string;
@@ -22,26 +27,23 @@ export interface EmploymentEntry {
 
 const I18N = (() => {
 	i18next.init({
-		fallbackLng: "en",
+		fallbackLng: DEFAULT_LOCALE,
 		debug: false,
 		resources: {
 			en: { translation: enLocale },
 			fr: { translation: frLocale },
+			ru: { translation: ruLocale },
 		},
 	});
 
 	return i18next;
 })();
 
-export const initLocale = (locale: Locale): any => {
+export const initLocale = (locale: Locale) => {
 	I18N.changeLanguage(locale);
 
 	return I18N.t;
 };
-
-export const COPYRIGHT_USER: string = "Cyril Dubet";
-export const COPYRIGHT_DATE: string = "2023 - 2026";
-export const DEFAULT_LOCALE: Locale = "en";
 
 export const getAge = (date: Date): number => {
 	const today: Date = new Date();
@@ -63,6 +65,8 @@ export const getFormattedDate = (date: Date, locale: Locale): string => {
 		case "fr":
 			return `${weekday[0]?.toUpperCase() + weekday.slice(1)} ${day}${suffix ?? ""} ${month} ${year}`;
 		case "ru":
-			return `${weekday[0]?.toUpperCase() + weekday.slice(1)}, ${day} ${month} ${year}`
+			return `${weekday[0]?.toUpperCase() + weekday.slice(1)}, ${day} ${month} ${year}`;
+		default:
+			throw new Error("Invalid locale for formatted date");
 	}
 };

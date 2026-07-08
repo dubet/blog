@@ -34,10 +34,10 @@ const sortedArticles = articles
 			{sortedArticles.length > 0 && sortedArticles.map((article) => (
 				<li class="py-6 px-8 flex flex-col">
 					<a href={`/${locale}/articles/${article.params.slug}`} class="w-fit text-black underline hover:text-blue-800">
-						<h2 class="text-3xl mb-4 font-bold">{article.props.data.title}</h2>
+						<h2 class="text-lg md:text-3xl mb-4 font-bold">{article.props.data.title}</h2>
 					</a>
-					<p class="text-gray-600 mt-2 italic text-lg">{article.props.data.description}</p>
-					<div class="flex gap-4 text-gray-600 mt-3 items-center justify-between font-bold text-md">
+					<p class="text-gray-600 mt-2 italic text-md md:text-lg">{article.props.data.description}</p>
+					<div class="flex gap-4 text-gray-600 mt-3 items-center justify-between font-bold text-sm md:text-md">
 						<span>{getFormattedDate(new Date(article.props.data.pubDate), locale)}</span>
 						<span>{article.props.data.locale.toUpperCase()}</span>
 					</div>

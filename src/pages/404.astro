@@ -4,7 +4,8 @@ import "@styles/theme.css";
 import { type Locale } from "@common";
 import Layout from "@layouts/Default.astro"
 import FaceWithMonocle from "@components/emojis/FaceWithMonocle.astro";
-import HouseIcon from "@components/icons/House.astro";
+import { BsHouseFill } from "solid-icons/bs";
+
 
 const LOCALE: Locale = ((): Locale => {
 	const pathname: string = Astro.url.pathname;
@@ -49,9 +50,7 @@ const translation = translations[LOCALE];
 				</h1>
 				<p class="text-center fg-white text-lg w-full">{translation.message}</p>
 				<a aria-label="return-home" href={`/${LOCALE}`} class="hero-button w-64">
-					<span class="h-10 w-10">
-						<HouseIcon />
-					</span>
+					<BsHouseFill size={36} />
 				</a>
 			</div>
 		</div>

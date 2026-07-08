@@ -1,7 +1,7 @@
 ---
 import type { Locale } from "@common";
 import ScrollButton from "./ScrollButton.astro";
-import FeatherPointedIcon from "./icons/FeatherPointed.astro";
+import { BsVectorPen } from "solid-icons/bs";
 
 interface Props {
 	locale: Locale;
@@ -22,9 +22,7 @@ const { locale } = Astro.props;
 	<div class="flex items-center justify-center gap-4">
 	<ScrollButton />
 	<a aria-label="Got to articles button" title="Go to articles button" href={`/${locale}/articles`} class="hero-button cursor-pointer">
-		<div class="h-10 w-10">
-			<FeatherPointedIcon />
-		</div>
+		<BsVectorPen size={32} />
 	</a>
 	</div>
 </header>

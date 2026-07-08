@@ -35,7 +35,7 @@ Prenons l'exemple du point de terminaison HTTP `GET /admin`, destiné aux utilis
 
 La norme HTTP définit les codes d'état `HTTP 401 UNAUTHORIZED`[^1] (en cas d'absence d'authentification) et `HTTP 403 FORBIDDEN`[^2] (en cas d'absence d'autorisation) pour indiquer que le point de terminaison demandé ne sera pas accessible tant que ces deux conditions ne seront pas remplies.
 
-Ces codes d'état sont explicites et significatifs. C'est pourquoi ils révèlent également des informations intéressantes : le fait que le point de terminaison sollicité soit **défini** (sinon, un code d'état `HTTP 404 NOT FOUND` aurait été renvoyé à la place) et **exploitable** ; en d'autres termes, le point de terminaison sollicité est défini ; dont celui-ci est censé renvoyer *quelque chose* dans la mesure où les conditions d'accès sont remplies.
+Ces codes d'état sont explicites et significatifs. C'est pourquoi ils révèlent également des informations intéressantes : le fait que le point de terminaison sollicité soit **défini** (sinon, un code d'état `HTTP 404 NOT FOUND` aurait été renvoyé à la place) et **exploitable** ; en d'autres termes, le point de terminaison sollicité est défini ; donc celui-ci est censé renvoyer *quelque chose* dans la mesure où les conditions d'accès sont remplies.
 
 On peut donc supposer que ces codes d'état HTTP, indispensables au dépannage tant en phase de développement qu'en production, puissent également révéler involontairement des informations exploitables sur le comportement de l'API à des tiers (par exemple, des acteurs malveillants ou des individus malintentionnés) cherchant à exploiter des vulnérabilités. Ces codes d'état mettent en évidence malgré eux les cibles de valeur et les zones d'intérêts au sein de l'API.
 
@@ -51,7 +51,7 @@ Pour les deux solutions identifiées que nous décrirons ci-après, nous prendro
 - Si le point de terminaison est défini
 - Si l'entité est autorisée
 
-## Solution #1: Le 404 générique
+## Solution #1 : Le 404 générique
 
 Et si nous choisissions de ne rien divulguer et d'utiliser un code d'état générique, quel que soit l'utilisateur qui tente d'accéder à l'un de nos points de terminaison ?
 
@@ -93,7 +93,7 @@ Les concepteurs d'APIs voudront plutôt définir des routes avec des noms géné
 
 Trouver tous les véritables points de terminaison prendra bien moins de temps qu'on pourrait penser, particulièrement pour les acteurs déterminés qui disposent bien souvent des meilleurs outils et sont mieux préparés.
 
-Quelques défenses existent contre ce type d'attaque, mais celles-ci ne seront pas détaillées dans cet article: il s'agit de *la limitation du nombre de requêtes*, *les opérations à temps constant* et le *bruit*.
+Quelques défenses existent contre ce type d'attaque, mais celles-ci ne seront pas détaillées dans cet article : il s'agit de *la limitation du nombre de requêtes*, *les opérations à temps constant* et le *bruit*.
 
 ## Solution #2 : Le 401 par défaut
 

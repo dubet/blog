@@ -7,18 +7,11 @@ import {
 	initLocale,
 	type Locale,
 } from "@common";
+
 import Header from "./HeroHeader.astro";
-import EnvelopeIcon from "./icons/Envelope.astro";
-import GithubIcon from "./icons/Github.astro";
-import UserIcon from "./icons/User.astro";
-import LocationDotIcon from "./icons/LocationDot.astro";
-import CakeCandlesIcon from "./icons/CakeCandles.astro";
-import LanguageIcon from "./icons/Language.astro";
 import ProgressBar from "./ProgressBar.astro";
-import CodeIcon from "./icons/Code.astro";
-import GraduationCapIcon from "@icons/GraduationCap.astro";
 import Card from "@components/Card.astro";
-import BriefcaseIcon from "@icons/Briefcase.astro";
+import { BsBriefcaseFill, BsCake2Fill, BsCodeSlash, BsEnvelopeAtFill, BsGeoAltFill, BsGithub, BsMortarboardFill, BsPersonFill, BsTranslate } from "solid-icons/bs";
 import Footer from "@components/Footer.astro";
 import Layout from "@/layouts/Default.astro";
 
@@ -57,37 +50,27 @@ const CV = {
 		<div class="mx-auto grid grid-cols-1 gap-4 px-10 py-8 md:container lg:grid-cols-2 2xl:px-auto bg-4th">
 			<section class="flex flex-col items-start gap-4">
 				<div class="flex w-full items-center justify-center">
-					<img class="h-64 w-64 rounded-full border-8 md:h-80 md:w-80 border-1st" alt="Photograph of Cyril Dubet" loading="lazy" src="/assets/images/me.webp" />
+					<img class="w-60 rounded-full border-8 md:w-102 border-1st" alt="Photograph of Cyril Dubet" loading="lazy" src="/assets/images/me.webp" />
 				</div>
 				<div class="flex w-full items-center justify-center gap-4">
 					<a aria-label="email-contact" href="mailto:cyril@dubet.fr" class="any-button">
-						<div class="h-10 w-10">
-							<EnvelopeIcon />
-						</div>
+						<BsEnvelopeAtFill size={32} />
 					</a>
 					<a aria-label="github-profile" target="_blank" href="https://github.com/dubet" class="any-button">
-						<div class="h-10 w-10">
-							<GithubIcon />
-						</div>
+						<BsGithub size={32} />
 					</a>
 				</div>
 				<div class=" text-md flex w-full flex-wrap justify-center gap-2">
 					<div class="info">
-						<span class="icon">
-							<UserIcon />
-						</span>
+						<BsPersonFill size={16} />
 						<span>Cyril Dubet</span>
 					</div>
 					<div class="info">
-						<span class="icon">
-							<LocationDotIcon />
-						</span>
+						<BsGeoAltFill size={16} />
 						<span>Paris, France</span>
 					</div>
 					<div class="info">
-						<span class="icon">
-							<CakeCandlesIcon />
-						</span>
+						<BsCake2Fill size={16} />
 						<span>{getFormattedDate(CV.birthDate, locale) + " (" + getAge(CV.birthDate) + " " + T("index.ageSuffix") + ")"}</span>
 					</div>
 				</div>
@@ -97,27 +80,21 @@ const CV = {
 					))}
 				</div>
 				<h2 class="section-title">
-					<span class="h-8 w-8 shrink-0 fg-white">
-						<LanguageIcon />
-					</span>
+					<BsTranslate size={32} />
 					<span>{T("index.languageTitle")}</span>
 				</h2>
 				{(CV.languages).map((l) => (
 					<ProgressBar label={l.label} level={l.level} />
 				))}
 				<h2 class="section-title">
-					<span class="h-8 w-8 shrink-0">
-						<CodeIcon />
-					</span>
+					<BsCodeSlash size={32} />
 					<span>{T("index.programmingTitle")}</span>
 				</h2>
 				{(CV.programming).map((p) => (
 					<ProgressBar label={p.label} level={p.level} />
 				))}
 				<h2 class="section-title">
-					<span class="h-8 w-8 shrink-0">
-						<GraduationCapIcon />
-					</span>
+					<BsMortarboardFill size={32} />
 					<span>{T("index.educationTitle")}</span>
 				</h2>
 				{(CV.education).map((e) => (
@@ -126,9 +103,7 @@ const CV = {
 			</section>
 			<section class="flex flex-col items-start gap-4">
 				<h2 class="section-title">
-					<span class="h-8 w-8 shrink-0">
-						<BriefcaseIcon />
-					</span>
+					<BsBriefcaseFill size={32} />
 					<span>{T("index.employmentTitle")}</span>
 				</h2>
 				{(CV.employment).map((e) => (
