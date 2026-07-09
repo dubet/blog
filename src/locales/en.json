@@ -5,7 +5,7 @@
 	},
 	"404": "The requested page does not exist (...yet?)",
 	"articleIndex": {
-		"noArticleFound": "Not article found. Come back later."
+		"noArticleFound": "No article found. Come back later."
 	},
 	"article": {
 		"backToList": "Back to list"

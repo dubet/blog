@@ -10,19 +10,18 @@ const { locale } = Astro.props;
 
 <header class="bg-1st">
 	<div class="flex items-center justify-between gap-4 text-white md:max-w-5xl xl:max-w-5xl mx-auto px-4 py-8">
-		<div class="flex gap-4 items-center md:text-5xl">
+		<div class="flex gap-4 items-center xs:text-xl sm:text-2xl md:text-5xl">
 			<a class="font-bold text-white hover:text-2nd" href={`/${locale}`}>dubet.fr</a>
 			<span class="font-bold text-white">{">"}</span>
-			<span class="font-bold text-white">articles ({`${locale.toUpperCase()}`})</span>
+			<span class="font-bold text-white">articles</span>
 		</div>
 		<div class="flex items-center gap-4">
 			{["en", "fr"].map((l: string) => (
-				l != locale && (
-					<div class="bg-2nd rounded-lg">
-						<a class="text-xs md:text-lg flex w-fit p-2 items-center justify-center rounded-lg text-black font-bold hover:bg-3rd" href={`/${l}/articles`}>{l.toUpperCase()}</a>
-					</div>
+				l == locale
+					? <button class="hero-button-responsive text-xl" disabled={true}>{l.toUpperCase()}</button>
+					: <a href={`/${l}/articles`} class="hero-button-responsive text-xl">{l.toUpperCase()}</a>
 				)
-			))}
+			)}
 		</div>
 	</div>
 </header>

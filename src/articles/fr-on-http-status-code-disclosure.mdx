@@ -1,10 +1,10 @@
 ---
 title: "Sur la divulgation des codes d'état HTTP d'une API REST"
-description: "Les codes d'état HTTP constituent un moyen efficace de dépannage, mais ils peuvent également servir à d'autres fins, comme l'analyse des points de terminaison d'API : cela pourrait avoir des répercussions sur la sécurité. Ou peut-être pas ?"
+description: "Les codes d'état HTTP constituent un moyen efficace de dépannage, mais ils peuvent également servir à d'autres fins, comme l'analyse des points de terminaison d'API : cela pourrait avoir des répercussions sur la sécurité..."
 pubDate: "2026-07-03"
 locale: "fr"
-slug: "sur-la-divulgation-des-codes-d-etat-http-d-une-api-rest"
-draft: false
+slug: "sur-la-divulgation-des-codes-d-etat-http"
+draft: true
 ---
 
 import { PublicationDate } from '@/articles/MarkdownStyle.tsx';
@@ -55,17 +55,19 @@ Pour les deux solutions identifiées que nous décrirons ci-après, nous prendro
 
 ## Solution #1 : Le 404 générique
 
-Et si nous choisissions de ne rien divulguer et d'utiliser un code d'état générique, quel que soit l'utilisateur qui tente d'accéder à l'un de nos points de terminaison ?
+Et si nous choisissions de ne rien divulguer et d'utiliser un code d'état générique lorsque les conditions d'accès ne sont pas satisfaites ?
 
-Par exemple, les deux points de terminaison HTTP `GET /whatever/we/type` et `GET /admin/invoices` renverraient le code d'état générique `HTTP 404 NOT FOUND`, que l'utilisateur soit authentifié ou non, et qu'il soit autorisé ou non.
+Par exemple, les deux points de terminaison HTTP `GET /whatever/we/type` et `GET /admin/invoices` renverraient le code d'état générique `HTTP 404 NOT FOUND`, qu'il s'agisse d'un problème d'authentification ou d'autorisation.
 
-En renvoyant ce code d'état générique, personne ne peut vraiment dire si la ressource existe ou non ; en fait, tout le monde reçoit systématiquement ce code d'état tant que qu'il n'est pas authentifié. Même lorsque les utilisateurs seront authentifiés, les points de terminaisons protégés nécessitant une autorisation ne renverront pas non plus de code `403`, mais le code générique `404`.
+En renvoyant ce code d'état générique, personne ne peut vraiment dire si la ressource existe réellement ou non. Le code d'état `HTTP 404 NOT FOUND` est prévu dans le cas où la ressource n'existe pas : c'est le code d'état le plus générique pouvant être utilisé pour masquer une ressource parmi tant d'autres.
 
-Dans les faits, cette solution ne renverrait plus que le code `HTTP 200 OK` si les contraintes d'authentification et d'autorisation sont satisfaites. Dans le cas contraire, un code d'était `HTTP 404 NOT FOUND` serait retourné à la place.
+Dans ce cas-là, tout le monde reçoit systématiquement ce code d'état tant que qu'il n'est pas authentifié ; et une fois authentifiée, si l'entité n'a pas l'autorisation, celle-ci recevra aussi ce même code d'état. Seules les entités autorisées seront en mesure d'accéder à la ressource et de constater que le code d'état générique qu'elles auraient reçu avant d'être authentifiées était un leurre.
+
+Cette solution ne renverrait plus que deux codes d'état : `HTTP 200 OK` si les contraintes d'authentification et d'autorisation sont satisfaites, et `HTTP 404 NOT FOUND` sinon.
 
 Cette solution implique de volontairement ignorer le standard HTTP, ce qui pourrait nuire à l'expérience des développeurs pendant le développement et les tests : en effet, les codes d'état sont un atout très précieux lors des *diagnostics* et de la *résolution de problèmes*.
 
-Pire encore, même en production, lors de la surveillance, nous ne serons pas en mesure de déterminer si les journaux sont pertinents, car toutes les réponses aux requêtes refusées seront enregistrées sous le code d'état `HTTP 404 NOT FOUND` : la surveillance des accès non autorisés deviendra une tâche pénible voire quasi-impossible.
+Même en production, nous ne serons pas en mesure de déterminer si les journaux sont pertinents, car toutes les réponses aux requêtes refusées seront enregistrées sous le code d'état `HTTP 404 NOT FOUND` : la surveillance des accès non autorisés deviendra une tâche pénible voire quasi-impossible.
 
 En effet, le fait de ne pas utiliser les codes d'état appropriés masquera la véritable raison pour laquelle le point de termination a renvoyé le code d'état `HTTP 404 NOT FOUND`, ce qui aura un impact direct sur la sécurité :
 
@@ -76,8 +78,6 @@ En effet, le fait de ne pas utiliser les codes d'état appropriés masquera la v
 À ce stade, avec un code d'état aussi générique, tout est possible.
 
 Plus généralement, il s'agit manifestement d'une façon de cacher la poussière sous le tapis. En fait, ce que nous obtenons avec cette solution, c'est la **pire** forme de sécurité qui soit : la *sécurité par l'obscurité*. Celle-ci procure un **faux** sentiment de sécurité, une illusion confortable de protection quand elle représente en vérité une tentative pathétique de se protéger du point de vue des attaquants.
-
-En fin de compte, on peut déjà voir que cette solution n'apporterait pas de véritable avantage, ni pour le développement, ni pour les opérations, ni pour la sécurité. La surveillance serait plus difficile pour le dépannage et l'audit, et l'expérience de développement serait pire.
 
 La norme HTTP a défini des codes d'état précis et significatifs. Nous devrions les utiliser en conséquence, en suivant les meilleures pratiques qui ont émergé au fil du temps.
 
@@ -105,13 +105,13 @@ La première question à se poser est : pouvons-nous authentifier et autoriser l
 
 Si la réponse est oui, alors nous pouvons toujours utiliser le code d'état `HTTP 404 NOT FOUND`, mais de manière plus limitée.
 
-Nous voudrions dans la grande majorité du temps utiliser une combinaison des codes d'état `HTTP 401 UNAUTHORIZED` et `HTTP 403 FORBIDDEN` à la place, en fonction de 1l'état actuel du flux de sécurité et de si le point de terminaison est défini ou non.
+Nous voudrions dans la grande majorité du temps utiliser une combinaison des codes d'état `HTTP 401 UNAUTHORIZED` et `HTTP 403 FORBIDDEN` à la place, en fonction de l'état actuel du flux de sécurité et de si le point de terminaison est défini ou non.
 
-Fondamentalement, cela signifie que nous devrions retourner le code d'état `HTTP 401 UNAUTHORIZED` tout le temps pour les sujets non authentifiés. Même les points de terminaison basiques ou non définis devront retourner ce code d'état, car l'authentification devient une condition préalable fondamentale avant même d'accéder au moindre semblant de fonctionnalité.
+Fondamentalement, cela signifie que nous devrions retourner le code d'état `HTTP 401 UNAUTHORIZED` tout le temps pour les sujets non authentifiés ; même pour les points de terminaison indéfinis. L'authentification devient une condition préalable fondamentale avant même d'accéder au moindre semblant de fonctionnalité.
 
 ---
 
-**NOTE** : Les points de terminaisons dits « techniques » (tels que `GET /health`), qui sont destinés à interroger le système sur ses performances, doivent évidemment être protégés par l'authentification et l'autorisation, car ils divulguent des informations internes pouvant être exploitées contre le système par des acteurs malveillants.
+**NOTE** : Les points de terminaison dits « techniques » (tels que `GET /health`), qui sont destinés à interroger le système sur ses performances, doivent évidemment être protégés par l'authentification et l'autorisation, car ils divulguent des informations internes pouvant être exploitées contre le système par des acteurs malveillants.
 
 De telles informations sur la santé du système peuvent même être considérées comme ayant le **même** niveau de confidentialité que les données client, à titre de comparaison.
 
@@ -119,20 +119,14 @@ De telles informations sur la santé du système peuvent même être considéré
 
 Lorsque les critères d'authentification sont remplis mais que les privilèges de l'entité sont insuffisants pour un point de terminaison défini, nous devrions toujours retourner `HTTP 403 FORBIDDEN`.
 
-Si le point de terminaison n'est pas défini, nous identifions deux scénarios, basés sur la politique d'autorisation mise en place :
-
-- Si un schéma d'autorisation est mis en place par défaut, (comme un mécanisme de correspondance partielle des routes), nous pouvons retourner `HTTP 403 FORBIDDEN` même si le point de terminaison n'est pas défini, car les vérifications d'autorisation seront exécutées avant de vérifier si celui-ci est défini dans le code. Si les vérifications d'autorisation passent, nous pourrions même retourner `HTTP 404 NOT FOUND` car le sujet aurait suffisamment de privilèges pour avoir le droit d'en connaître.
-- Si au contraire, aucun schéma d'autorisation n'est défini par défaut, cela signifie que les critères d'autorisation sont définis directement au sein du point de terminaison. Dans ce cas, on peut supposer que le sujet aurait été autorisé à accéder aux points de terminaison s'ils avaient été définis. Par conséquent, nous devrions retourner `HTTP 404 NOT FOUND`, car si l'endpoint avait été défini, il n'aurait peut-être pas été protégé par un mécanisme d'autorisation (donc l'endpoint aurait été globalement disponible pour tout sujet authentifié, sans configuration supplémentaire).
-
 En fin de compte, le tableau suivant représente quel serait le code d'état renvoyé par rapport à la situation initiale et à la définition ou non du point de terminaison :
 
 | Situation | Point de terminaison | Code d'état |
 |-----------|----------|-------------|
 | Non Authentifié | Indéfini   | `401 UNAUTHORIZED` |
 | Non Authentifié | Défini     | `401 UNAUTHORIZED` |
-| Authentifié     | Indéfini   | `403 FORBIDDEN` |
+| Authentifié     | Indéfini   | `403 FORBIDDEN` \| `404 NOT FOUND` |
 | Non Autorisé    | Défini     | `403 FORBIDDEN` |
-| Autorisé        | Indéfini   | `404 NOT FOUND` |
 | Autorisé        | Défini     | `200 OK` |
 
 Ce compromis semble acceptable : nous pouvons légitimement cacher la vérité sur les définitions des points de terminaison à tous les sujets non authentifiés, et à tous les sujets non autorisés qui n'ont pas suffisamment de privilèges. Nous laissons seulement les plus privilégiés avoir le droit d'en connaître sur le véritable fait qu'un point de terminaison puisse ne pas avoir été défini en retournant `HTTP 404 NOT FOUND`.

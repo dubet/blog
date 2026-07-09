@@ -10,7 +10,8 @@
 
 	--font-merriweather: "Merriweather", serif;
 
-	--breakpoint-sm: 320px;
+	--breakpoint-xs: 320px;
+	--breakpoint-sm: 512px;
 	--breakpoint-md: 768px;
 	--breakpoint-lg: 1024px;
 	--breakpoint-xl: 1280px;
@@ -86,6 +87,18 @@ body {
 
 .hero-button {
 	@apply transition flex h-16 w-16 text-2xl items-center justify-center rounded-lg bg-2nd text-black font-bold;
+
+	&:focus,
+	&:hover {
+		@apply bg-3rd scale-140;
+	}
+	&:disabled {
+		@apply bg-gray-600 text-white cursor-not-allowed;
+	}
+}
+
+.hero-button-responsive {
+	@apply transition flex h-8 w-8 text-sm sm:text-xl md:text-2xl items-center justify-center rounded-lg bg-2nd text-black font-bold sm:h-12 sm:w-12 md:h-16 md:w-16;
 
 	&:focus,
 	&:hover {
