@@ -16,7 +16,7 @@
 		"description": [
 			"Avec plus de 6 ans d'expérience dans des projets d'ingénierie logicielle, je me suis spécialisé au fil du temps dans le développement backend avec des langages de bas niveau sur des problématiques de sécurité ou de volumétrie transactionnelle. J'aime écrire du code efficace et fournir des solutions simples et élégantes à des problèmes complexes.",
 			"Principalement intéressé par la sécurité et la programmation concurrente, je possède aussi des compétences opérationnelles issues des méthodologies DevOps, telles que l'intégration continue, le déploiement continu et l'amélioration continue, avec l'automatisation comme fer de lance, aujourd'hui incontournable dans le métier.",
-			"J'évolue aujourd'hui dans des missions très variées au sein d'Avisto chez des clients de rayonnement international."
+			"J'évolue aujourd'hui dans des missions très variées au sein d'Alstom en tant qu'architecte logiciel."
 		],
 		"languageTitle": "Langues",
 		"language": {
@@ -42,6 +42,21 @@
 		],
 		"employmentTitle": "Expériences Professionnelles",
 		"employment": [
+			{
+				"label": "Architecte Logiciel",
+				"years": "Since 2026",
+				"company": "Alstom",
+				"location": "Saint-Ouen, France",
+				"content": [
+					"Conception de solutions pour des logicials Data & AI déployés sur PaaS Microsoft Azure ou On-Premise"
+				],
+				"tags": [
+					"MCP",
+					"Ingénierie des Données",
+					"Python",
+					"ML Ops"
+				]
+			},
 			{
 				"label": "Ingénieur DevOps",
 				"years": "Depuis 2024",
