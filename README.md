@@ -6,11 +6,11 @@ The hosting is done with the Google Firebase Hosting product, which is basically
 
 Before, I was using a Virtual Private Server (VPS) rented from OVH and the cost of running it was around 5 euros per month. Switching from Firebase was a really cost effective solution for my needs.
 
-I plan in the future to have also some blog posts in a dedicated section.
+I plan in the future to have also some blog posts in a dedicated section (still working on it...).
 
 ## Setting up
 
-You need `node` (>20) installed on your machine, as well as `yarn`. To enable and install the latest version, you'll also need to enable `corepack`.
+You need `node` (26) installed on your machine, as well as `pnpm` (install it with `nvm` + `corepack`).
 
 ## Design
 

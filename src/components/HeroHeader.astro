@@ -1,7 +1,6 @@
 ---
 import type { Locale } from "@common";
 import ScrollButton from "./ScrollButton.astro";
-import { BsVectorPen } from "solid-icons/bs";
 
 interface Props {
 	locale: Locale;
@@ -11,7 +10,7 @@ const { locale } = Astro.props;
 ---
 
 <header class=" min-h-svh flex-col items-center justify-center gap-4 text-white flex bg-1st">
-	<div class="absolute right-4 top-4">
+	<div class="absolute right-8 top-8">
 		<div class="flex items-center gap-4">
 			{["en", "fr"].map((l: string) => (
 				l == locale
@@ -24,9 +23,6 @@ const { locale } = Astro.props;
 	<div class="absolute bottom-24">
 		<div class="flex items-center justify-center gap-4">
 			<ScrollButton />
-			<a aria-label="Go to articles button" title="Go to articles button" href={`/${locale}/articles`} class="hero-button cursor-pointer">
-				<BsVectorPen size={32} />
-			</a>
 		</div>
 	</div>
 </header>

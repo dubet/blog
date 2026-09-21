@@ -1,0 +1,16 @@
+---
+title: "Your article title..."
+description: "Your article description..."
+pubDate: "2026-07-03"
+locale: "en"
+slug: "your-article-slug"
+draft: true
+---
+
+import { PublicationDate } from '@/articles/MarkdownStyle.tsx';
+
+# {frontmatter.title}
+
+<PublicationDate date={frontmatter.pubDate} locale={frontmatter.locale} />
+
+Your content here...
