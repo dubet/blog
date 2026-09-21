@@ -1,8 +1,4 @@
 ---
-import BuildingIcon from './icons/Building.astro';
-import CalendarIcon from './icons/Calendar.astro';
-import LocationDotIcon from './icons/LocationDot.astro';
-
 interface Props {
 	label: string;
 	years: string;
@@ -19,21 +15,12 @@ const { label, years, host, location, content, tags } = Astro.props;
 	<h2 class="text-center text-[1.3rem] font-bold">{label}</h2>
 	<div class="w-full flex flex-wrap justify-center gap-2">
 		<span class="vignette-item">
-			<span class="h-6 w-6 shrink-0">
-				<CalendarIcon />
-			</span>
 			{years}
 		</span>
 		<span class="vignette-item">
-			<span class="h-6 w-6 shrink-0">
-				<BuildingIcon />
-			</span>
 			{host}
 		</span>
 		<span class="vignette-item">
-			<span class="h-6 w-6 shrink-0">
-				<LocationDotIcon />
-			</span>
 			{location}
 		</span>
 	</div>

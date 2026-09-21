@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-	--color-1st: #2f1d1a;
-	--color-2nd: #cd785e;
-	--color-3rd: #f0e3d3;
+	--color-1st: #082736;
+	--color-2nd: #fecf71;
+	--color-3rd: #ded5bf;
 	--color-4th: #fdeac1;
-	--color-black: #2d211d;
-	--color-white: #f8f1e8;
+	--color-5th: #1c6bbb;
+	--color-black: #353535;
+	--color-white: #ded5bf;
 
 	--font-merriweather: "Merriweather", serif;
 
@@ -62,6 +63,10 @@ body {
 	background-color: var(--color-4th);
 }
 
+.bg-5th {
+	background-color: var(--color-5th);
+}
+
 .fg-2nd {
 	color: var(--color-2nd);
 }
@@ -87,11 +92,11 @@ body {
 }
 
 .hero-button {
-	@apply transition flex h-16 w-16 text-2xl items-center justify-center rounded-lg bg-3rd text-black font-bold;
+	@apply transition flex h-16 w-16 text-2xl items-center justify-center rounded-lg bg-2nd text-black font-bold shadow-lg;
 
 	&:focus,
 	&:hover {
-		@apply bg-2nd scale-140;
+		@apply bg-5th text-white scale-140;
 	}
 	&:disabled {
 		@apply bg-gray-600 text-white cursor-not-allowed;
@@ -99,11 +104,11 @@ body {
 }
 
 .hero-button-responsive {
-	@apply transition flex h-8 w-8 text-sm sm:text-xl md:text-2xl items-center justify-center rounded-lg bg-3rd text-black font-bold sm:h-12 sm:w-12 md:h-16 md:w-16;
+	@apply transition flex h-8 w-8 text-sm sm:text-xl md:text-2xl items-center justify-center rounded-lg bg-2nd text-black font-bold sm:h-12 sm:w-12 md:h-16 md:w-16;
 
 	&:focus,
 	&:hover {
-		@apply bg-2nd scale-140;
+		@apply bg-5th text-white scale-140;
 	}
 	&:disabled {
 		@apply bg-gray-600 text-white cursor-not-allowed;

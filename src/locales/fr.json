@@ -44,11 +44,11 @@
 		"employment": [
 			{
 				"label": "Architecte Logiciel",
-				"years": "Since 2026",
+				"years": "Depuis 2026",
 				"company": "Alstom",
 				"location": "Saint-Ouen, France",
 				"content": [
-					"Conception de solutions pour des logicials Data & AI déployés sur PaaS Microsoft Azure ou On-Premise"
+					"Conception de solutions pour des projets Data & AI déployés sur PaaS Microsoft Azure ou On-Premise"
 				],
 				"tags": [
 					"MCP",
@@ -59,7 +59,7 @@
 			},
 			{
 				"label": "Ingénieur DevOps",
-				"years": "Depuis 2024",
+				"years": "2024 - 2026",
 				"company": "Avisto",
 				"location": "Cachan, France",
 				"content": [
